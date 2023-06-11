@@ -1,0 +1,77 @@
+<h1 class="text-center">LIST OF EMPLOYEES</h1>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+        <h1 class="badge badge-warning ml-2" style="font-size: 1em; text-decoration: underline;">
+            List of departments
+        </h1>
+        <div class="col-md-12">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <div style="display: flex; flex-direction: row; justify-content: space-around;" class="my-4">
+                        <p class="border rounded text-center" style="width:200px; flex-wrap: nowrap; background-color: darkgoldenrod; color: black;">
+                            Departement1
+                        </p>
+                        <p class="border text-center rounded" style="width:200px; flex-wrap: nowrap; background-color: darkgoldenrod; color: black;">
+                            Departement2
+                        </p>
+                        <p class="border text-center rounded" style="width:200px; flex-wrap: nowrap; background-color: darkgoldenrod; color: black;">
+                            Departement3
+                        </p>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div style="display: flex; flex-direction: row; justify-content: space-around;" class="my-4">
+                        <p class="border text-center rounded" style="width:200px; flex-wrap: nowrap; background-color: darkgoldenrod; color: black;">
+                            Departement4
+                        </p>
+                        <p class="border text-center rounded" style="width:200px; flex-wrap: nowrap; background-color: darkgoldenrod; color: black;">
+                            Departement5
+                        </p>
+                        <p class="border text-center rounded" style="width:200px; flex-wrap: nowrap; background-color: darkgoldenrod; color: black;">
+                            Departement6
+                        </p>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div style="display: flex; flex-direction: row; justify-content: space-around;" class="my-4">
+                        <p class="border text-center rounded" style="width:200px; flex-wrap: nowrap; background-color: darkgoldenrod; color: black;">
+                            Departement7
+                        </p>
+                        <p class="border text-center rounded" style="width:200px; flex-wrap: nowrap; background-color: darkgoldenrod; color: black;">
+                            Departement8
+                        </p>
+                        <p class="border text-center rounded" style="width:200px; flex-wrap: nowrap; background-color: darkgoldenrod; color: black;">
+                            Departement9
+                        </p>
+                    </div>
+                  </div>
+                </div>
+                <a class="carousel-control-prev mb-3" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next mb-3" href="#carouselExampleIndicators" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+        </div>
+    </div>
+     <div class="row">
+        <div class="col-md-8">
+            <app-employee-list></app-employee-list>
+        </div>
+        <div class="col-md-3">
+            <app-employee-profil></app-employee-profil>
+        </div>
+     </div>
+  </div>
+</section> 
