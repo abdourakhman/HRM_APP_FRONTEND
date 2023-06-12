@@ -13,13 +13,16 @@ import { EmployeeListComponent } from './employee/employee-list/employee-list.co
 import { EmployeeProfilComponent } from './employee/employee-profil/employee-profil.component';
 import { JobComponent } from './job/job.component';
 import { JobListComponent } from './job/job-list/job-list.component';
+import { ContractComponent } from './contract/contract.component';
+import { ContractListComponent } from './contract/contract-list/contract-list.component';
 
 
 const appRoutes:Routes = [
+  {path:'contracts',component:ContractComponent},
   {path:'dashboard', component:DashboardComponent},
   {path:'departments',component:DepartmentsComponent},
-  {path:'jobs',component:JobComponent},
   {path:'employees',component:EmployeeComponent},
+  {path:'jobs',component:JobComponent},
   {path:'',component:DashboardComponent},
 ]
 @NgModule({
@@ -33,7 +36,9 @@ const appRoutes:Routes = [
     EmployeeListComponent,
     EmployeeProfilComponent,
     JobComponent,
-    JobListComponent
+    JobListComponent,
+    ContractComponent,
+    ContractListComponent
   ],
   imports: [
     BrowserModule,
