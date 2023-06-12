@@ -15,6 +15,7 @@ import { JobComponent } from './job/job.component';
 import { JobListComponent } from './job/job-list/job-list.component';
 import { ContractComponent } from './contract/contract.component';
 import { ContractListComponent } from './contract/contract-list/contract-list.component';
+import { TimeOffComponent } from './time-off/time-off.component';
 
 
 const appRoutes:Routes = [
@@ -23,6 +24,7 @@ const appRoutes:Routes = [
   {path:'departments',component:DepartmentsComponent},
   {path:'employees',component:EmployeeComponent},
   {path:'jobs',component:JobComponent},
+  {path:'timeOffRequests',component:TimeOffComponent},
   {path:'',component:DashboardComponent},
 ]
 @NgModule({
@@ -38,7 +40,8 @@ const appRoutes:Routes = [
     JobComponent,
     JobListComponent,
     ContractComponent,
-    ContractListComponent
+    ContractListComponent,
+    TimeOffComponent
   ],
   imports: [
     BrowserModule,
