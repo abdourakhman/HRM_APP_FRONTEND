@@ -11,11 +11,14 @@ import { DepartmentlistComponent } from './department/departmentlist/departmentl
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeeListComponent } from './employee/employee-list/employee-list.component';
 import { EmployeeProfilComponent } from './employee/employee-profil/employee-profil.component';
+import { JobComponent } from './job/job.component';
+import { JobListComponent } from './job/job-list/job-list.component';
 
 
 const appRoutes:Routes = [
   {path:'dashboard', component:DashboardComponent},
   {path:'departments',component:DepartmentsComponent},
+  {path:'jobs',component:JobComponent},
   {path:'employees',component:EmployeeComponent},
   {path:'',component:DashboardComponent},
 ]
@@ -28,7 +31,9 @@ const appRoutes:Routes = [
     DepartmentlistComponent,
     EmployeeComponent,
     EmployeeListComponent,
-    EmployeeProfilComponent
+    EmployeeProfilComponent,
+    JobComponent,
+    JobListComponent
   ],
   imports: [
     BrowserModule,
