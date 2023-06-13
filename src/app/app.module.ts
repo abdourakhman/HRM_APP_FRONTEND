@@ -12,14 +12,14 @@ import { EmployeeComponent } from './employee/employee.component';
 import { EmployeeListComponent } from './employee/employee-list/employee-list.component';
 import { EmployeeProfilComponent } from './employee/employee-profil/employee-profil.component';
 import { JobListComponent } from './job-list/job-list.component';
-import { ContractComponent } from './contract/contract.component';
-import { ContractListComponent } from './contract/contract-list/contract-list.component';
 import { TimeOffComponent } from './time-off/time-off.component';
 import { OrganizationService } from './services/organization.service';
+import { ResourceService } from './services/resource.service';
+import { ContractListComponent } from './contract-list/contract-list.component';
 
 
 const appRoutes:Routes = [
-  {path:'contracts',component:ContractComponent},
+  {path:'contracts',component:ContractListComponent},
   {path:'dashboard', component:DashboardComponent},
   {path:'departments',component:DepartmentListComponent},
   {path:'employees',component:EmployeeComponent},
@@ -37,7 +37,6 @@ const appRoutes:Routes = [
     EmployeeListComponent,
     EmployeeProfilComponent,
     JobListComponent,
-    ContractComponent,
     ContractListComponent,
     TimeOffComponent
   ],
@@ -49,6 +48,7 @@ const appRoutes:Routes = [
   ],
   providers: [
     OrganizationService,
+    ResourceService,
   ],
   bootstrap: [AppComponent]
 })
