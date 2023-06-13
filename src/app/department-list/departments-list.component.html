@@ -2,7 +2,7 @@
     <h1 class="text-center mt-5">LIST OF DEPARTMENTS</h1>
 </div>
 <div class="row">
-    <div class="col-md-4" *ngFor="let department of departments">
+    <div class="col-md-4" *ngFor="let department of departments$ | async">
         <div class="card p-3 my-2 mx-2">
             <div class="d-flex justify-content-between">
                 <div class="d-flex flex-row align-items-center">

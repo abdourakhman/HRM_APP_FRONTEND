@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Job } from '../models/Job.model';
+import { OrganizationService } from '../services/organization.service';
 
 @Component({
   selector: 'app-job',
@@ -7,14 +10,11 @@ import { Component } from '@angular/core';
 })
 export class JobListComponent {
 
-  jobs: any[] =[];
-  constructor(){}
+  constructor(private organizationService : OrganizationService){}
+
+  jobs$! : Observable<Job[]>;
 
   ngOnInit(){
-    this.jobs = [
-      {name:'Développeur Java', description:"Concevez et développez des applications Java."},
-      {name:'Data Analyst', description:"Analysez et interprétez des données pour des insights."},
-      {name:'Comptable', description:"Gérez les opérations comptables et financières."}
-    ]
+    this.jobs$ = this.organizationService.listJob();
   }
 }

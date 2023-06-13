@@ -15,7 +15,7 @@ import { JobListComponent } from './job-list/job-list.component';
 import { ContractComponent } from './contract/contract.component';
 import { ContractListComponent } from './contract/contract-list/contract-list.component';
 import { TimeOffComponent } from './time-off/time-off.component';
-import { OrganizationService } from './services/department.service';
+import { OrganizationService } from './services/organization.service';
 
 
 const appRoutes:Routes = [
@@ -48,7 +48,7 @@ const appRoutes:Routes = [
     HttpClientModule,
   ],
   providers: [
-    OrganizationService
+    OrganizationService,
   ],
   bootstrap: [AppComponent]
 })

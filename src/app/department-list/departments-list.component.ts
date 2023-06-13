@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { OrganizationService } from '../services/organization.service';
+import { Observable } from 'rxjs';
+import { Department } from '../models/Department.model';
 
 @Component({
   selector: 'app-department-list',
@@ -8,14 +11,11 @@ import { Component, OnInit } from '@angular/core';
 export class DepartmentListComponent implements OnInit{
 
   departments: any[] = [];
-  constructor(){}
+  constructor(private organizationService : OrganizationService){}
+  departments$ !: Observable<Department[]>;
 
   ngOnInit(): void {
-      this.departments = [
-        {name:"Informatique", description:"department informatique"},
-        {name:"Finance", description:"department finance"},
-        {name:"Maintenance", description:"department maintenance"},
-      ];
+      this.departments$ = this.organizationService.listDepartment();
   }
 
 }
