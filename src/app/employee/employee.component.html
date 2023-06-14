@@ -12,44 +12,30 @@
                   <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                   <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                   <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="8"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="9"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="10"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="11"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="12"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="13"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="14"></li>
                 </ol>
                 <div class="carousel-inner">
                   <div class="carousel-item active">
                     <div style="display: flex; flex-direction: row; justify-content: space-around;" class="my-4">
                         <p class="border rounded text-center" style="width:200px; flex-wrap: nowrap; background-color: darkgoldenrod; color: black;">
-                            Departement1
-                        </p>
-                        <p class="border text-center rounded" style="width:200px; flex-wrap: nowrap; background-color: darkgoldenrod; color: black;">
-                            Departement2
-                        </p>
-                        <p class="border text-center rounded" style="width:200px; flex-wrap: nowrap; background-color: darkgoldenrod; color: black;">
-                            Departement3
+                        All department
                         </p>
                     </div>
                   </div>
-                  <div class="carousel-item">
+                  <div class="carousel-item" *ngFor="let department of departments$ | async ">
                     <div style="display: flex; flex-direction: row; justify-content: space-around;" class="my-4">
                         <p class="border text-center rounded" style="width:200px; flex-wrap: nowrap; background-color: darkgoldenrod; color: black;">
-                            Departement4
-                        </p>
-                        <p class="border text-center rounded" style="width:200px; flex-wrap: nowrap; background-color: darkgoldenrod; color: black;">
-                            Departement5
-                        </p>
-                        <p class="border text-center rounded" style="width:200px; flex-wrap: nowrap; background-color: darkgoldenrod; color: black;">
-                            Departement6
-                        </p>
-                    </div>
-                  </div>
-                  <div class="carousel-item">
-                    <div style="display: flex; flex-direction: row; justify-content: space-around;" class="my-4">
-                        <p class="border text-center rounded" style="width:200px; flex-wrap: nowrap; background-color: darkgoldenrod; color: black;">
-                            Departement7
-                        </p>
-                        <p class="border text-center rounded" style="width:200px; flex-wrap: nowrap; background-color: darkgoldenrod; color: black;">
-                            Departement8
-                        </p>
-                        <p class="border text-center rounded" style="width:200px; flex-wrap: nowrap; background-color: darkgoldenrod; color: black;">
-                            Departement9
+                            {{department.name}}
                         </p>
                     </div>
                   </div>
