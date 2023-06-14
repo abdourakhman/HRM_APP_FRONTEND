@@ -3,21 +3,12 @@
        <h3 class="card-title">List of Employee</h3>
        <nav aria-label="Page navigation example" >
          <ul class="pagination justify-content-end" >
-           <li class="page-item">
-             <a class="page-link" href="#" aria-label="Previous">
-               <span aria-hidden="true">&laquo;</span>
-               <span class="sr-only">Previous</span>
-             </a>
-           </li>
-           <li class="page-item"><a class="page-link" href="#">1</a></li>
-           <li class="page-item"><a class="page-link" href="#">2</a></li>
-           <li class="page-item"><a class="page-link" href="#">3</a></li>
-           <li class="page-item">
-             <a class="page-link" href="#" aria-label="Next">
-               <span aria-hidden="true">&raquo;</span>
-               <span class="sr-only">Next</span>
-             </a>
-           </li>
+            <pagination-controls 
+            [responsive]="true"
+            [autoHide]="true"
+            [directionLinks]="true"
+            (pageChange)="currentPage = $event; pageChanged($event)">
+       </pagination-controls>
          </ul>
        </nav>
     </div>
@@ -32,9 +23,8 @@
              </tr>
           </thead>
           <tbody>
-             <tr>
-                <td>employee.</td>
-                <td>Update software</td>
+             <tr *ngFor="let employee of employees$ | async | paginate: { itemsPerPage:18, currentPage:currentPage}">
+                <td>{{employee.firstName}}</td>
                 <td>
                    <div class="progress progress-xs">
                       <div class="progress-bar progress-bar-danger" style="width: 55%"></div>

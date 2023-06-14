@@ -16,7 +16,8 @@ import { TimeOffComponent } from './time-off/time-off.component';
 import { OrganizationService } from './services/organization.service';
 import { ResourceService } from './services/resource.service';
 import { ContractListComponent } from './contract-list/contract-list.component';
-
+import { NgxPaginationModule } from 'ngx-pagination';
+import { HumanService } from './services/human.service';
 
 const appRoutes:Routes = [
   {path:'contracts',component:ContractListComponent},
@@ -45,10 +46,12 @@ const appRoutes:Routes = [
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
+    NgxPaginationModule,
   ],
   providers: [
     OrganizationService,
     ResourceService,
+    HumanService,
   ],
   bootstrap: [AppComponent]
 })
