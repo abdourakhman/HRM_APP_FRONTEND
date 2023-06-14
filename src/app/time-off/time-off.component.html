@@ -1,7 +1,13 @@
 <div>
     <h1 class="text-center">LIST OF ALL REQUESTS </h1>
 </div>
-<div class="row">
+<div *ngIf="dataState === 'ERROR'" class="mx-auto mt-5">
+    <div class="error p-3 rounded">Erreur rencontrée !</div>
+</div>
+<div *ngIf="dataState === 'LOADING'"  class="mx-auto mt-5">
+    <div class="spinner"></div>
+</div>
+<div class="row" *ngIf="dataState === 'COMPLETE'">
     <div class="col-md-5 p-2 m-5" *ngFor="let timeOff of timeOffs$ | async">
         <div class="card card-primary card-outline">
             <div class="card-header">

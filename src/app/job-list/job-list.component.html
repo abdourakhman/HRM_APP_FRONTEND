@@ -1,7 +1,13 @@
 <div class="mt-5">
     <h1 class="text-center mt-5">LIST OF JOBS</h1>
 </div>
-<div class="row">
+<div *ngIf="dataState === 'ERROR'" class="mx-auto mt-5">
+    <div class="error p-3 rounded">Erreur rencontrée !</div>
+</div>
+<div *ngIf="dataState === 'LOADING'"  class="mx-auto mt-5">
+    <div class="spinner"></div>
+</div>
+<div class="row" *ngIf="dataState === 'COMPLETE'">
     <div class="col-md-4" *ngFor="let job of jobs$ | async">
         <div class="card p-3 my-2 mx-2">
             <div class="d-flex justify-content-between">

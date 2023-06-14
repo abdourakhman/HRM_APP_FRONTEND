@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OrganizationService } from '../services/organization.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Department } from '../models/Department.model';
+import { DataState } from '../enumeration/DataState.enum';
 
 @Component({
   selector: 'app-department-list',
@@ -10,12 +11,19 @@ import { Department } from '../models/Department.model';
 })
 export class DepartmentListComponent implements OnInit{
 
-  departments: any[] = [];
   constructor(private organizationService : OrganizationService){}
+  dataState:DataState = DataState.LOADING
   departments$ !: Observable<Department[]>;
+  departmentSubscription! :Subscription;
 
   ngOnInit(): void {
       this.departments$ = this.organizationService.listDepartment();
+      this.departmentSubscription = this.departments$.subscribe(
+        ()=> console.log,
+        ()=> this.dataState = DataState.ERROR,
+        ()=> this.dataState = DataState.COMPLETE
+      )
   }
+  
 
 }
