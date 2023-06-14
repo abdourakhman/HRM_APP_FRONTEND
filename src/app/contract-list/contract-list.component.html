@@ -1,29 +1,38 @@
 <div>
     <h1 class="text-center">LIST OF ALL CONTRACTS</h1>
 </div>
-<div class="row">
-    <div class="col-sm-4 col-md-4 " *ngFor="let contract of contracts$ | async">
-        <div class="position-relative border border-black rounded p-3 m-3" style="height: 210px; color: black; background-color: azure;">
-            <div class="ribbon-wrapper ribbon-xl">
-               <div class="ribbon" [ngClass]="{'bg-danger text-lg':contract.type === 'ALTERNATION',
-                                                'bg-info text-xl':contract.type === 'CDD',
-                                                'bg-success text-xl':contract.type === 'CDI'}">
-                  {{contract.type}}
-               </div>
-            </div>
-            <p style="text-decoration: underline; font-size: 0.8em;" class="badge badge-secondary">Ref N°= {{ contract.employee.registrationNumber | uppercase}}</p> 
-            <p>Employee: {{contract.employee.firstName}} {{contract.employee.name}}</p>
-            <p>humanResourceMnager: {{contract.humanResourceMnager}} </p>
-            <p class="margin-auto badge badge-warning">{{contract.status}}</p>
-            <p class= "text-center py-2">
-                <small>
-                    {{contract.start}} - 
-                    <span *ngIf="contract.type ==='CDD'">
-                        {{contract.end}}
-                    </span> 
-                    <span *ngIf="contract.type ==='CDI'">Indeterminé</span> 
-                </small>
-            </p>
-         </div>        
+<div class="row" >
+    <div *ngIf="dataState === 'ERROR'" class="mx-auto my-5">
+        <div class="error p-3">Erreur rencontrée !</div>
+    </div>
+    <div *ngIf="dataState === 'LOADING'"  class="mx-auto mt-5">
+        <div class="spinner"></div>
+    </div>
+    <div *ngIf="dataState === 'COMPLETE'">
+        <div class="col-sm-4 col-md-4 " *ngFor="let contract of contracts$ | async">
+
+            <div class="position-relative border border-black rounded p-3 m-3" style="height: 210px; color: black; background-color: azure;">
+                <div class="ribbon-wrapper ribbon-xl">
+                <div class="ribbon" [ngClass]="{'bg-danger text-lg':contract.type === 'ALTERNATION',
+                                                    'bg-info text-xl':contract.type === 'CDD',
+                                                    'bg-success text-xl':contract.type === 'CDI'}">
+                    {{contract.type}}
+                </div>
+                </div>
+                <p style="text-decoration: underline; font-size: 0.8em;" class="badge badge-secondary">Ref N°= {{ contract.employee.registrationNumber | uppercase}}</p> 
+                <p>Employee: {{contract.employee.firstName}} {{contract.employee.name}}</p>
+                <p>humanResourceMnager: {{contract.humanResourceMnager}} </p>
+                <p class="margin-auto badge badge-warning">{{contract.status}}</p>
+                <p class= "text-center py-2">
+                    <small>
+                        {{contract.start}} - 
+                        <span *ngIf="contract.type ==='CDD'">
+                            {{contract.end}}
+                        </span> 
+                        <span *ngIf="contract.type ==='CDI'">Indeterminé</span> 
+                    </small>
+                </p>
+            </div>        
+        </div>
     </div>
 </div>
