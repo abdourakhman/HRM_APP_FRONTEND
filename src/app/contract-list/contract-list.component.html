@@ -3,7 +3,7 @@
 </div>
 <div class="row">
     <div class="col-sm-4 col-md-4 " *ngFor="let contract of contracts$ | async">
-        <div class="position-relative rounded p-3 bg-gray m-3" style="height: 210px">
+        <div class="position-relative border border-black rounded p-3 m-3" style="height: 210px; color: black; background-color: azure;">
             <div class="ribbon-wrapper ribbon-xl">
                <div class="ribbon" [ngClass]="{'bg-danger text-lg':contract.type === 'ALTERNATION',
                                                 'bg-info text-xl':contract.type === 'CDD',
@@ -11,7 +11,7 @@
                   {{contract.type}}
                </div>
             </div>
-            <p style="text-decoration: underline; font-size: 0.8em;">Ref N°= {{ contract.employee.registrationNumber | uppercase}}</p> 
+            <p style="text-decoration: underline; font-size: 0.8em;" class="badge badge-secondary">Ref N°= {{ contract.employee.registrationNumber | uppercase}}</p> 
             <p>Employee: {{contract.employee.firstName}} {{contract.employee.name}}</p>
             <p>humanResourceMnager: {{contract.humanResourceMnager}} </p>
             <p class="margin-auto badge badge-warning">{{contract.status}}</p>

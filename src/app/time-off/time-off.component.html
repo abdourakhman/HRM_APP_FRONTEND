@@ -2,34 +2,35 @@
     <h1 class="text-center">LIST OF ALL REQUESTS </h1>
 </div>
 <div class="row">
-    <div class="col-md-5 p-2 m-5">
+    <div class="col-md-5 p-2 m-5" *ngFor="let timeOff of timeOffs$ | async">
         <div class="card card-primary card-outline">
             <div class="card-header">
-               <h3 class="text-lg">REQUEST TIME OFF /  <span class="ml-3 text-sm ml-auto badge badge-warning">Type time off</span></h3>
+               <h3 class="text-lg">REQUEST TIME OFF /  <span class="ml-3 text-sm ml-auto badge badge-warning">{{ timeOff.type }}</span></h3>
             </div>
             <div class="card-body">
-               <strong><i class="fas fa-user mr-1"></i> Employee Name</strong>
+               <strong><i class="fas fa-user mr-1"></i> {{ timeOff.employee.firstName }} {{ timeOff.employee.name }}</strong>
                <p class="text-muted">
-                 departmentName and  jobName
+                 {{ timeOff.employee.department.name }} -- {{ timeOff.employee.job.title }}
                </p>
                <hr>
                <strong><i class="fas fa-calendar mr-1"></i> Date of request </strong>
-               <p class="text-muted">Malibu, California</p>
+               <p class="text-muted">{{ timeOff.requestDate }} /p>
                <hr>
                <strong><i class="fas fa-hourglass mr-1"></i> Period</strong>
                <div class="text-muted row">
                     <div class="col-md-6">
                         <span class="tag tag-danger">Desired start:</span>
-                        <span class="tag tag-success">strat date</span>
+                        <span class="tag tag-success">{{ timeOff.desiredStartDate }}</span>
                     </div>
                     <div class="col-md-6">
                         <span class="tag tag-info">Desired end:</span>
-                        <span class="tag tag-warning">end date</span>
+                        <span class="tag tag-warning">{{ timeOff.desiredEndDate }}</span>
                     </div> 
                </div>
                <hr>
                <strong><i class="fa fa-comment mr-1"></i> Reason</strong>
-               <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+               <p class="text-muted" *ngIf="timeOff.reason">{{ timeOff.reason }}</p>
+               <p class="text-muted" *ngIf="!timeOff.reason">No reason specified !</p>
             </div>
             <div class="row">
                 <div class="col-md-3  mb-2">
@@ -41,48 +42,5 @@
                 </div>
             </div>
          </div>
-         
     </div>
-    <div class="col-md-5 p-2 m-5 ">
-        <div class="card card-primary card-outline">
-            <div class="card-header">
-               <h3 class="text-lg">REQUEST TIME OFF /  <span class="ml-3 text-sm ml-auto badge badge-warning">Type time off</span></h3>
-            </div>
-            <div class="card-body">
-               <strong><i class="fas fa-user mr-1"></i> Employee Name</strong>
-               <p class="text-muted">
-                 departmentName and  jobName
-               </p>
-               <hr>
-               <strong><i class="fas fa-calendar mr-1"></i> Date of request </strong>
-               <p class="text-muted">Malibu, California</p>
-               <hr>
-               <strong><i class="fas fa-hourglass mr-1"></i> Period</strong>
-               <div class="text-muted row">
-                    <div class="col-md-6">
-                        <span class="tag tag-danger">Desired start:</span>
-                        <span class="tag tag-success">strat date</span>
-                    </div>
-                    <div class="col-md-6">
-                        <span class="tag tag-info">Desired end:</span>
-                        <span class="tag tag-warning">end date</span>
-                    </div> 
-               </div>
-               <hr>
-               <strong><i class="fa fa-comment mr-1"></i> Reason</strong>
-               <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
-            </div>
-            <div class="row">
-                <div class="col-md-3  mb-2">
-                    <a href="#" class="btn btn-outline btn-info w-100">validate</a>
-                </div>
-                <div class="offset-7"></div>
-                <div class="col-md-3 mb-2">
-                    <a href="#" class="btn btn-outline btn-warning w-100">reject</a>
-                </div>
-            </div>
-         </div>
-         
-    </div>
-    
 </div>

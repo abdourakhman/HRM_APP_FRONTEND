@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, catchError, tap, throwError } from "rxjs";
 import { Contract } from "../models/Contract.model";
+import { timeOffRequest } from "../models/TimeOffRequest.model";
 
 @Injectable()
 export class ResourceService{
@@ -16,6 +17,14 @@ export class ResourceService{
             catchError(this.handleError)
         )
     }
+
+    listTimeOffRequest(): Observable<timeOffRequest[]>{
+        return this.http.get<timeOffRequest[]>(`${this.myApiUrl}/timeOffRequests`).pipe(
+            tap(console.log),
+            catchError(this.handleError)
+        )
+    }
+
     handleError(error: HttpErrorResponse): Observable<never> {
         console.log(error)
         throw throwError(`An error occurred - Error code : ${error.status}`);
