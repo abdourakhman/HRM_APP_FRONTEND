@@ -18,6 +18,7 @@ import { ResourceService } from './services/resource.service';
 import { ContractListComponent } from './contract-list/contract-list.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { HumanService } from './services/human.service';
+import { DepartmentSlideComponent } from './department-list/department-slide/department-slide.component';
 
 const appRoutes:Routes = [
   {path:'contracts',component:ContractListComponent},
@@ -39,7 +40,8 @@ const appRoutes:Routes = [
     EmployeeProfilComponent,
     JobListComponent,
     ContractListComponent,
-    TimeOffComponent
+    TimeOffComponent,
+    DepartmentSlideComponent
   ],
   imports: [
     BrowserModule,

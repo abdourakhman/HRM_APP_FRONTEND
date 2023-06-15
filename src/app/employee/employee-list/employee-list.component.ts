@@ -17,8 +17,7 @@ export class EmployeeListComponent implements OnInit{
   employees$!: Observable<Employee[]>;
 
   currentPage:number = 1;
-  count:number =5;  
-  tableSize:number = 5;
+  
 
   ngOnInit(): void {
     this.employees$ = this.humanService.listEmployee();

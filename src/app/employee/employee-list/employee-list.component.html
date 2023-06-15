@@ -1,4 +1,10 @@
-<div class="card">
+<div *ngIf="dataState === 'ERROR'" class="mx-auto mt-5">
+   <div class="error p-3 rounded">Erreur rencontrée !</div>
+</div>
+<div *ngIf="dataState === 'LOADING'"  class="mx-auto mt-5">
+   <div class="spinner"></div>
+</div>
+<div class="card" *ngIf="dataState === 'COMPLETE'">
     <div class="card-header">
        <h3 class="card-title">List of Employee</h3>
        <nav aria-label="Page navigation example" >
@@ -25,12 +31,9 @@
           <tbody>
              <tr *ngFor="let employee of employees$ | async | paginate: { itemsPerPage:18, currentPage:currentPage}">
                 <td>{{employee.firstName}}</td>
-                <td>
-                   <div class="progress progress-xs">
-                      <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                   </div>
-                </td>
-                <td><span class="badge bg-danger">55%</span></td>
+                <td>{{employee.name}}</td>
+                <td>{{employee.email}}</td>
+                <td><span class="badge bg-warning">{{employee.hiringDate}}</span></td>
              </tr>
           </tbody>
        </table>

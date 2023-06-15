@@ -1,3 +1,9 @@
+<div *ngIf="dataState === 'ERROR'" class="mx-auto mt-5">
+   <div class="error p-3 rounded">Erreur rencontrée !</div>
+</div>
+<div *ngIf="dataState === 'LOADING'"  class="mx-auto mt-5">
+   <div class="spinner"></div>
+</div>
 <div class="card card-primary card-outline">
     <div class="card-body box-profile">
        <div class="text-center">

@@ -1,0 +1,36 @@
+<div *ngIf="dataState === 'ERROR'" class="mx-auto mt-5">
+    <div class="error p-3 rounded">Erreur rencontrée !</div>
+</div>
+<div *ngIf="dataState === 'LOADING'"  class="mx-auto mt-5">
+    <div class="spinner"></div>
+</div>
+<div  id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" *ngIf="dataState === 'COMPLETE'">
+    <ol class="carousel-indicators">
+     <p *ngFor="let department of departments$ | async ; let i = index">
+     </p> 
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div style="display: flex; flex-direction: row; justify-content: space-around;" class="my-4">
+            <p class="border rounded text-center" style="width:200px; flex-wrap: nowrap; background-color: darkgoldenrod; color: black;">
+            All department
+            </p>
+        </div>
+      </div>
+      <div class="carousel-item" *ngFor="let department of departments$ | async ">
+        <div style="display: flex; flex-direction: row; justify-content: space-around;" class="my-4">
+            <p class="border text-center rounded" style="width:200px; flex-wrap: nowrap; background-color: darkgoldenrod; color: black; cursor:pointer;">
+                {{department.name}}
+            </p>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev mb-3" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next mb-3" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</div>
