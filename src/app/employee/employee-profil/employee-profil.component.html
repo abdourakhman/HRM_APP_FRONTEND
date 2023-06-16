@@ -1,42 +1,50 @@
-<div *ngIf="dataState === 'ERROR'" class="mx-auto mt-5">
-   <div class="error p-3 rounded">Erreur rencontrée !</div>
-</div>
-<div *ngIf="dataState === 'LOADING'"  class="mx-auto mt-5">
-   <div class="spinner"></div>
-</div>
 <div class="card card-primary card-outline">
-    <div class="card-body box-profile">
-       <div class="text-center">
-          <img class="profile-user-img img-fluid img-circle" src="assets/img/user4-128x128.jpg" alt="User profile picture">
+    <div class="card-body box-profile" *ngIf="employee">
+       <div class="text-center">          
+         <img class="profile-user-img img-fluid img-circle" [src]="employee.photoUrl" alt="User profile picture">
        </div>
-       <h3 class="profile-username text-center">Nina Mcintire</h3>
-       <p class="text-muted text-center">Software Engineer</p>
+       <h3 class="profile-username text-center">{{ employee.firstName}} {{ employee.name}}</h3>
+       <p class="text-muted text-center">{{ employee.job.title}}</p>
     </div>
  </div>
  <div class="card card-primary">
     <div class="card-header">
        <h3 class="text-center text-lg">ABOUT</h3>
-    </div>
-    <div class="card-body">
-       <strong><i class="fas fa-book mr-1"></i> Education</strong>
+    </div> 
+    <div class="card-body" *ngIf="employee">
+      <strong *ngIf="employee.gender==='FEMALE'"><i class="fas fa-venus mr-1" ></i> Gender</strong>
+      <strong *ngIf="employee.gender==='MALE'"><i class="fas fa-mars mr-1"></i> Gender</strong>
        <p class="text-muted">
-          B.S. in Computer Science from the University of Tennessee at Knoxville
+          <span class="badge badge-primary">
+             {{employee.gender}}
+          </span>
+       </p>
+       <hr>
+      <strong><i class="fas fa-birthday-cake mr-1"></i> Birthday</strong>
+       <p class="text-muted">
+          {{employee.birthday}}
+       </p>
+       <hr>
+       <strong><i class="fas fa-mobile mr-1"></i> Telephone</strong>
+       <p class="text-muted">
+          {{employee.telephone}}
        </p>
        <hr>
        <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
-       <p class="text-muted">Malibu, California</p>
+       <p class="text-muted">{{ employee.address}}</p>
        <hr>
        <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
        <p class="text-muted">
-          <span class="tag tag-danger">UI Design</span>
-          <span class="tag tag-success">Coding</span>
-          <span class="tag tag-info">Javascript</span>
-          <span class="tag tag-warning">PHP</span>
-          <span class="tag tag-primary">Node.js</span>
+          <span class="tag tag-danger">{{ employee.job.skills}}</span>
        </p>
        <hr>
-       <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
-       <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+       <strong class="mr-1"><i class="far fa-file-alt"></i> Status</strong>
+       <p class="badge badge-success" *ngIf="employee.status=='ACTIVE'">
+         {{employee.status}}
+       </p>
+       <p class="badge badge-danger" *ngIf="employee.status=='INACTIVE'">
+         {{employee.status}}
+       </p>
     </div>
  </div>
  

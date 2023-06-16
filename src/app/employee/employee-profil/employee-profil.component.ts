@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { DataState } from 'src/app/enumeration/DataState.enum';
 import { Employee } from 'src/app/models/Employee.model';
 import { HumanService } from 'src/app/services/human.service';
@@ -9,20 +8,15 @@ import { HumanService } from 'src/app/services/human.service';
   templateUrl: './employee-profil.component.html',
   styleUrls: ['./employee-profil.component.css']
 })
-export class EmployeeProfilComponent {
+export class EmployeeProfilComponent implements OnInit{
 
   constructor(private humanService : HumanService){}
-
-  dataState: DataState = DataState.LOADING;
-  employees$!: Observable<Employee[]>;
-
+  
+  employee: Employee;
+  dataState:DataState = DataState.LOADING
   ngOnInit(): void {
-    this.employees$ = this.humanService.listEmployee();
-      this.employees$.subscribe(
-        ()=>console.log,
-        ()=>this.dataState=DataState.ERROR,
-        ()=>this.dataState=DataState.COMPLETE
-      )
-    
+    this.humanService.selectedEmployee$.subscribe(
+      (selectedEmployee)=>{this.employee = selectedEmployee; this.dataState = DataState.COMPLETE}
+    )
   }
 }
