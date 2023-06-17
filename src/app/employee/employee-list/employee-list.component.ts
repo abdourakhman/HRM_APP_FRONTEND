@@ -15,11 +15,10 @@ export class EmployeeListComponent implements OnInit{
   employees?: Employee[];
   currentPage:number = 1;
   dataState : DataState = DataState.LOADING;
-  departmentName?:string;
 
   ngOnInit(): void {
     this.humanService.employee$.subscribe(
-      (employees) => {this.employees = employees; this.dataState = DataState.COMPLETE},
+      (employees) => {this.employees = employees; this.dataState = DataState.COMPLETE;},
       ()=> this.dataState = DataState.ERROR,
       ()=> this.dataState = DataState.COMPLETE
     )
