@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { DataState } from 'src/app/enumeration/DataState.enum';
 import { Department } from 'src/app/models/Department.model';
+import { HumanService } from 'src/app/services/human.service';
 import { OrganizationService } from 'src/app/services/organization.service';
 
 @Component({
@@ -9,8 +10,8 @@ import { OrganizationService } from 'src/app/services/organization.service';
   templateUrl: './department-slide.component.html',
   styleUrls: ['./department-slide.component.css']
 })
-export class DepartmentSlideComponent {
-  constructor(private organizationService : OrganizationService){}
+export class DepartmentSlideComponent implements OnInit {
+  constructor(private organizationService : OrganizationService, private humanService:HumanService){}
   dataState:DataState = DataState.LOADING
   departments$ !: Observable<Department[]>;
   departmentSubscription! :Subscription;
@@ -22,5 +23,9 @@ export class DepartmentSlideComponent {
         ()=> this.dataState = DataState.ERROR,
         ()=> this.dataState = DataState.COMPLETE
       )
+  }
+
+  onSelectDepartment(departmentID:number){
+    this.humanService.listEmployeeOfDepartment(departmentID);
   }
 }

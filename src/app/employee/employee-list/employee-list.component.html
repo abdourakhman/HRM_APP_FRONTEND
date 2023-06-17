@@ -6,7 +6,7 @@
 </div>
 <div class="card" *ngIf="dataState === 'COMPLETE'">
     <div class="card-header">
-       <h3 class="card-title">List of Employee</h3>
+       <h3 class="card-title">List of Employee {{departmentName}}</h3>
        <nav aria-label="Page navigation example" >
          <ul class="pagination justify-content-end" >
             <pagination-controls 
@@ -29,7 +29,7 @@
              </tr>
           </thead>
           <tbody>
-             <tr *ngFor="let employee of employees | paginate: { itemsPerPage:18, currentPage:currentPage}">
+             <tr *ngFor="let employee of employees | paginate: { itemsPerPage:19, currentPage:currentPage}">
                 <td (click)="onSelectEmployee(employee.id)" style="cursor: pointer;">{{employee.firstName}}</td>
                 <td (click)="onSelectEmployee(employee.id)" style="cursor: pointer;">{{employee.name}}</td>
                 <td (click)="onSelectEmployee(employee.id)" style="cursor: pointer;">{{employee.email}}</td>

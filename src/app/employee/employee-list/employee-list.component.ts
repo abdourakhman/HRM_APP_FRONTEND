@@ -12,16 +12,16 @@ export class EmployeeListComponent implements OnInit{
 
   constructor(private humanService : HumanService){}
 
-  employees!: Employee[];
-
+  employees?: Employee[];
   currentPage:number = 1;
-  dataState : DataState = DataState.LOADING
+  dataState : DataState = DataState.LOADING;
+  departmentName?:string;
 
   ngOnInit(): void {
-    this.humanService.listEmployee().subscribe(
-      (data) =>this.employees =  data,
-      ()=>this.dataState = DataState.ERROR,
-      ()=>this.dataState = DataState.COMPLETE
+    this.humanService.employee$.subscribe(
+      (employees) => {this.employees = employees;},
+      ()=> this.dataState = DataState.ERROR,
+      ()=> this.dataState = DataState.COMPLETE
     )
   }
 

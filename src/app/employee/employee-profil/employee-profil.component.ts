@@ -16,7 +16,9 @@ export class EmployeeProfilComponent implements OnInit{
   dataState:DataState = DataState.LOADING
   ngOnInit(): void {
     this.humanService.selectedEmployee$.subscribe(
-      (selectedEmployee)=>{this.employee = selectedEmployee; this.dataState = DataState.COMPLETE}
+      (selectedEmployee)=>this.employee = selectedEmployee,
+      ()=>this.dataState = DataState.ERROR,
+      ()=> this.dataState = DataState.COMPLETE
     )
   }
 }

@@ -12,14 +12,14 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
         <div style="display: flex; flex-direction: row; justify-content: space-around;" class="my-4">
-            <p class="border rounded text-center" style="width:200px; flex-wrap: nowrap; background-color: darkgoldenrod; color: black;">
+            <p (click)="onSelectDepartment(0)"class="border rounded text-center" style="width:200px; flex-wrap: nowrap; background-color: darkgoldenrod; color: black; cursor: pointer;">
             All department
             </p>
         </div>
       </div>
       <div class="carousel-item" *ngFor="let department of departments$ | async ">
         <div style="display: flex; flex-direction: row; justify-content: space-around;" class="my-4">
-            <p class="border text-center rounded" style="width:200px; flex-wrap: nowrap; background-color: darkgoldenrod; color: black; cursor:pointer;">
+            <p (click)="onSelectDepartment(department.id)" class="border text-center rounded" style="width:200px; flex-wrap: nowrap; background-color: darkgoldenrod; color: black; cursor:pointer;">
                 {{department.name}}
             </p>
         </div>
