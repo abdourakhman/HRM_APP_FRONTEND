@@ -19,7 +19,7 @@ export class EmployeeListComponent implements OnInit{
 
   ngOnInit(): void {
     this.humanService.employee$.subscribe(
-      (employees) => {this.employees = employees;},
+      (employees) => {this.employees = employees; this.dataState = DataState.COMPLETE},
       ()=> this.dataState = DataState.ERROR,
       ()=> this.dataState = DataState.COMPLETE
     )
