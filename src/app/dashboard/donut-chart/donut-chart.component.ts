@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 import { Chart } from 'angular-highcharts';
 
 @Component({
-  selector: 'app-chart-bar',
-  templateUrl: './chart-bar.component.html',
-  styleUrls: ['./chart-bar.component.css']
+  selector: 'app-donut-chart',
+  templateUrl: './donut-chart.component.html',
+  styleUrls: ['./donut-chart.component.css']
 })
-export class ChartBarComponent {
+export class DonutChartComponent {
   chart = new Chart({
     chart: {
-      type: 'bar'
+      type: 'pie'
     },
     title: {
       text: 'Number employees by Departement'

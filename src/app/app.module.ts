@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { HighchartsChartModule} from 'highcharts-angular'
+import { ChartModule } from 'angular-highcharts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +21,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { HumanService } from './services/human.service';
 import { DepartmentSlideComponent } from './department-list/department-slide/department-slide.component';
 import { ChartBarComponent } from './dashboard/chart-bar/chart-bar.component';
+import { DonutChartComponent } from './dashboard/donut-chart/donut-chart.component';
 
 const appRoutes:Routes = [
   {path:'contracts',component:ContractListComponent},
@@ -45,6 +46,7 @@ const appRoutes:Routes = [
     TimeOffComponent,
     DepartmentSlideComponent,
     ChartBarComponent,
+    DonutChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,7 @@ const appRoutes:Routes = [
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
     NgxPaginationModule,
-    HighchartsChartModule,
+    ChartModule,
   ],
   providers: [
     OrganizationService,
