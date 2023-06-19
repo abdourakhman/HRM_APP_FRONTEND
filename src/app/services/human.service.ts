@@ -49,6 +49,39 @@ export class HumanService{
     );
     }
 
+    getNumberOfEmployees(){
+        return this.http.get<number>(`${this.myApiUrl}/numberOfEmployees`).pipe(
+            tap((data)=> console.log(data)),
+            catchError(this.handleError)
+        );
+    }
+
+    getNumberOfEmployeesByDepartment(){
+        return this.http.get<Map<string,number>>(`${this.myApiUrl}/numberOfEmployees/department`).pipe(
+            tap((data)=> console.log(data)),
+            catchError(this.handleError)
+        );
+    }
+
+    getNumberOfEmployeesByJob(){
+        return this.http.get<Map<string,number>>(`${this.myApiUrl}/numberOfEmployees/job`).pipe(
+            tap((data)=> console.log(data)),
+            catchError(this.handleError)
+        );
+    }
+    getNumberOfEmployeesByGender(){
+        return this.http.get<any>(`${this.myApiUrl}/numberOfEmployees/gender`).pipe(
+            tap((data)=> console.log(data)),
+            catchError(this.handleError)
+        );
+    }
+    getAverageAgeOfEmployees(){
+        return this.http.get<number>(`${this.myApiUrl}/employees/average/age`).pipe(
+            tap((data)=> console.log(data)),
+            catchError(this.handleError)
+        );
+    }
+
     
 
 

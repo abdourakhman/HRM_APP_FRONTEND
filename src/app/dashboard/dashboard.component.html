@@ -21,17 +21,17 @@
      
         <div class="col-md-2 border rounded py-1">
            <p class="text-center my-0">Overall Employee</p>
-           <p class="text-center my-0" style="font-size: 3em; font-weight: bold;">123</p>
+           <p class="text-center my-0" style="font-size: 3em; font-weight: bold;">{{ numberOfEmployees }}</p>
         </div>
         <div class="col-md-2 border rounded py-1">
            <p class="text-center my-0">Average Age</p>
-           <p class="text-center my-0" style="font-size: 3em; font-weight: bold;">30</p>
+           <p class="text-center my-0" style="font-size: 3em; font-weight: bold;">{{ averageAgeOfEmployee }}</p>
         </div><div class="col-md-2 border rounded py-1">
            <p class="text-center my-0">Average Salary</p>
-           <p class="text-center my-0" style="font-size: 3em; font-weight: bold;">8.75K</p>
+           <p class="text-center my-0" style="font-size: 2em; font-weight: bold;">{{ averageSalary | number:'1.0-0' }}Dh</p>
         </div><div class="col-md-2 border rounded py-1">
            <p class="text-center my-0">Ongoing Project</p>
-           <p class="text-center my-0" style="font-size: 3em; font-weight: bold;">3</p>
+           <p class="text-center my-0" style="font-size: 3em; font-weight: bold;">{{numberOfOngoingProject}}</p>
         </div><div class="col-md-2 border rounded py-1">
            <p class="text-center my-0">titre1</p>
            <p class="text-center my-0" style="font-size: 3em; font-weight: bold;">123</p>
@@ -51,10 +51,10 @@
            </div>
            <div style="display: flex;">
               <div class="border text-center" style="width: 50%; background-color: rgb(247, 192, 52);">
-                 <span style="color: black;">100</span>
+                 <span style="color: black;">{{ numberOfEmployeesByGender.Male }}</span>
               </div>
               <div class="ml-auto border text-center" style="width: 50%;background-color: rgb(250, 146, 0);">
-                 <span style="color: black;" >23</span>
+                 <span style="color: black;" >{{ numberOfEmployeesByGender.Female }}</span>
            </div>
            </div>
         </div>
@@ -66,11 +66,11 @@
 <section class="content">
   <div class="container-fluid">
      <div class="row">
-      <div class="col-md-6">
+        <div class="col-md-5">
+           <app-donut-chart> </app-donut-chart>
+        </div>
+      <div class="col-md-7">
          <app-chart-bar></app-chart-bar>
-      </div>
-      <div class="col-md-6">
-         <app-donut-chart></app-donut-chart>
       </div>
      </div>
   </div>

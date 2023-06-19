@@ -25,6 +25,20 @@ export class ResourceService{
         )
     }
 
+    getAverageSalary(){
+        return this.http.get(`${this.myApiUrl}/contracts/average/salary`).pipe(
+            tap(console.log),
+            catchError(this.handleError)
+        )
+    }
+
+    getNumberOngoingProject(){
+        return this.http.get(`${this.myApiUrl}/projects/ongoing`).pipe(
+            tap(console.log),
+            catchError(this.handleError)
+        )
+    }
+
     handleError(error: HttpErrorResponse): Observable<never> {
         console.log(error)
         throw throwError(`An error occurred - Error code : ${error.status}`);
