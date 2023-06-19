@@ -28,13 +28,13 @@
            <p class="text-center my-0" style="font-size: 3em; font-weight: bold;">{{ averageAgeOfEmployee }}</p>
         </div><div class="col-md-2 border rounded py-1">
            <p class="text-center my-0">Average Salary</p>
-           <p class="text-center my-0" style="font-size: 2em; font-weight: bold;">{{ averageSalary | number:'1.0-0' }}Dh</p>
+           <p class="text-center my-0" style="font-size: 3em; font-weight: bold;">{{ averageSalary | number : '1.0-0' }}</p><span style="position: absolute; bottom: 0; right: 0; font-size: 1em;">Dh</span>
         </div><div class="col-md-2 border rounded py-1">
            <p class="text-center my-0">Ongoing Project</p>
            <p class="text-center my-0" style="font-size: 3em; font-weight: bold;">{{numberOfOngoingProject}}</p>
         </div><div class="col-md-2 border rounded py-1">
-           <p class="text-center my-0">titre1</p>
-           <p class="text-center my-0" style="font-size: 3em; font-weight: bold;">123</p>
+           <p class="text-center my-0">Personnal Active</p>
+           <p class="text-center my-0" style="font-size: 3em; font-weight: bold;">{{ numberOfActiveEmployees }}</p><span style="position: absolute; bottom: 0; right: 0; font-size: 1em; width: 25px; height: 25px; background-color: green;"></span>
         </div>
 
        </div>

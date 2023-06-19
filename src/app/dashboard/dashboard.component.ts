@@ -9,6 +9,7 @@ import { ResourceService } from '../services/resource.service';
 })
 export class DashboardComponent implements OnInit{
   numberOfEmployees : number =0;
+  numberOfActiveEmployees : number =0;
   averageAgeOfEmployee : number = 0;
   averageSalary : number = 0;
   numberOfOngoingProject : number = 0;
@@ -36,6 +37,9 @@ export class DashboardComponent implements OnInit{
           console.error(error);
         }
       );
+      this.humanService.getNumberOfActiveEmployees().subscribe(
+        (data) => this.numberOfActiveEmployees = data
+      )
 
       this.humanService.getNumberOfEmployeesByJob().subscribe(
         (data) => this.numberOfEmployeesByJob = data

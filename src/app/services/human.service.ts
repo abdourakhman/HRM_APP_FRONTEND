@@ -56,6 +56,14 @@ export class HumanService{
         );
     }
 
+    getNumberOfActiveEmployees(){
+        return this.http.get<number>(`${this.myApiUrl}/numberOfEmployees/active`).pipe(
+            tap((data)=> console.log(data)),
+            catchError(this.handleError)
+        );
+    }
+
+    
     getNumberOfEmployeesByDepartment(){
         return this.http.get<Map<string,number>>(`${this.myApiUrl}/numberOfEmployees/department`).pipe(
             tap((data)=> console.log(data)),
