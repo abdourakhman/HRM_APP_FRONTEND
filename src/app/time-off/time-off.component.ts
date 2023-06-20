@@ -13,12 +13,11 @@ export class TimeOffComponent implements OnInit{
   currentPage:number = 1;
   dataState:DataState = DataState.LOADING;
   timeOffs$! : Observable<timeOffRequest[]>;
-  timeOffSubscription!:Subscription;
   constructor(private resourceService: ResourceService){}
   
   ngOnInit(): void {
     this.timeOffs$ = this.resourceService.listTimeOffRequest();
-    this.timeOffSubscription = this.timeOffs$.subscribe(
+    this.timeOffs$.subscribe(
         ()=> console.log,
         ()=> this.dataState = DataState.ERROR,
         ()=> this.dataState = DataState.COMPLETE

@@ -22,6 +22,7 @@ import { HumanService } from './services/human.service';
 import { DepartmentSlideComponent } from './department-list/department-slide/department-slide.component';
 import { ChartBarComponent } from './dashboard/chart-bar/chart-bar.component';
 import { DonutChartComponent } from './dashboard/donut-chart/donut-chart.component';
+import { TimesheetComponent } from './timesheet/timesheet.component';
 
 const appRoutes:Routes = [
   {path:'contracts',component:ContractListComponent},
@@ -30,6 +31,7 @@ const appRoutes:Routes = [
   {path:'employees',component:EmployeeComponent},
   {path:'jobs',component:JobListComponent},
   {path:'timeOffRequests',component:TimeOffComponent},
+  {path:'timesheets',component:TimesheetComponent},
   {path:'',component:DashboardComponent},
 ]
 @NgModule({
@@ -47,6 +49,7 @@ const appRoutes:Routes = [
     DepartmentSlideComponent,
     ChartBarComponent,
     DonutChartComponent,
+    TimesheetComponent,
   ],
   imports: [
     BrowserModule,

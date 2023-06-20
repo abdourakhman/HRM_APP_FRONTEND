@@ -1,0 +1,53 @@
+<div class="mt-5">
+    <h1 class="text-center mt-5">LIST OF TIMESHEETS</h1>
+</div>
+<div *ngIf="dataState === 'ERROR'" class="mx-auto mt-5">
+    <div class="error p-3 rounded">Erreur rencontrée !</div>
+</div>
+<div *ngIf="dataState === 'LOADING'"  class="mx-auto mt-5">
+    <div class="spinner"></div>
+</div>
+<div class="row" *ngIf="dataState === 'COMPLETE'">
+    <div class="col-md-5 p-2 m-5" *ngFor="let timesheet of timesheet$ | async | paginate: { itemsPerPage:6, currentPage:currentPage}">
+        <div class="card card-primary card-outline">
+            <div class="card-header">
+               <h3 class="text-lg">TIMESHEET <span class="ml-3 text-sm ml-auto badge badge-success"><i class="fa fa-address-book"></i>
+               </span></h3>
+            </div>
+            <div class="card-body">
+               <strong><i class="fas fa-user mr-1"></i> {{ timesheet.employee.firstName }} {{ timesheet.employee.name }}</strong>
+               <p class="text-muted">
+                 JobName - DepartmentName
+               </p>
+               <hr>
+               <strong><i class="fas fa-calendar mr-1"></i>Absence</strong>
+               <p class="text-muted">{{timesheet.absence}} <p>
+               <hr>
+               <strong><i class="fas fa-hourglass mr-1"></i> Period</strong>
+               <div class="text-muted row">
+                    <div class="col-md-6">
+                        <span class="tag tag-danger">hours worked: </span>
+                        <span *ngIf="timesheet.hoursWorked" class="tag tag-success">{{timesheet.hoursWorked | date :'HH'}}H</span>
+                        <span  *ngIf="!timesheet.hoursWorked" class="tag tag-success">Néant //</span>
+                    </div>
+               </div>
+               <hr>
+               <strong><i class="fa fa-comment mr-1"></i> Reason</strong>
+               <p class="text-muted" *ngIf="timesheet.comment">{{ timesheet.comment }}</p>
+               <p class="text-muted" *ngIf="!timesheet.comment">No comment specified !</p>
+            </div>
+         </div>
+    </div>
+    <div class="mx-auto mt-2">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-end" >
+            <pagination-controls 
+            [responsive]="true"
+            [autoHide]="true"
+            [directionLinks]="true"
+            (pageChange)="currentPage = $event; pageChanged($event)">
+        </pagination-controls>
+            </ul>
+        </nav>
+   </div>
+</div>

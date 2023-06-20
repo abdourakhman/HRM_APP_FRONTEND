@@ -1,8 +1,9 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable, catchError, tap, throwError } from "rxjs";
+import { Observable, catchError, map, tap, throwError } from "rxjs";
 import { Contract } from "../models/Contract.model";
 import { timeOffRequest } from "../models/TimeOffRequest.model";
+import { Timesheet } from "../models/Timesheet.model";
 
 @Injectable()
 export class ResourceService{
@@ -39,6 +40,30 @@ export class ResourceService{
         )
     }
 
+    listTimesheets(): Observable<Timesheet[]> {
+        return this.http.get<Timesheet[]>(`${this.myApiUrl}/timesheets`).pipe(
+          map((timesheets: Timesheet[]) => {
+            return timesheets.map((timesheet: Timesheet) => {
+              // Convertir la durée en objet Date
+              let duration:string  = "";
+              if(!timesheet.hoursWorked)
+                duration = "PT0H";
+              else
+               duration = timesheet.hoursWorked.toString(); 
+              const hours = parseInt(duration.substring(2, duration.indexOf('H')), 10);
+              const date = new Date();
+              date.setHours(hours);
+              timesheet.hoursWorked = date; // Remplacer la durée par l'objet Date
+              return timesheet;
+            });
+          }),
+          tap(console.log),
+          catchError(this.handleError)
+        );
+      }
+      
+   
+      
     handleError(error: HttpErrorResponse): Observable<never> {
         console.log(error)
         throw throwError(`An error occurred - Error code : ${error.status}`);
