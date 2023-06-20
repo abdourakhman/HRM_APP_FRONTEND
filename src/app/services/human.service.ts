@@ -17,7 +17,15 @@ export class HumanService{
     selectedEmployee:Employee
     employees:Employee[];
 
-
+    getEmployeeByRegistration(registrationNumber:string):Observable<Employee>{
+        return this.http.get<Employee>(`${this.myApiUrl}/employee/${registrationNumber}`).pipe(
+            tap(
+                (employee)=> console.log(employee)
+            ),
+            catchError(this.handleError)
+        )
+    }
+    
     listEmployeeOfDepartment(id: number){
 
         if(id !== 0){

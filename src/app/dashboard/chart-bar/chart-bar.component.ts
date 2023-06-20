@@ -28,7 +28,7 @@ export class ChartBarComponent {
             backgroundColor: '#454d55'
           },
           title: {
-            text: 'Repartition By Job',
+            text: 'Number of Employees by Job',
             style: {
               color: '#ffffff'
             }

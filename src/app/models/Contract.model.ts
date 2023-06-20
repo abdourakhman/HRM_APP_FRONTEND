@@ -15,6 +15,6 @@ export class Contract{
         public employeeID : number,
         public humanResourceManagerID : number,
         public employee : Employee,
-        public humanResourceMnager : HumanResourceManager
+        public humanResourceManager : HumanResourceManager
     ){}
 }

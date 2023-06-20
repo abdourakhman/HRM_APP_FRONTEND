@@ -1,8 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subscription, tap } from 'rxjs';
+import { Observable, Subscription, catchError, tap } from 'rxjs';
 import { ResourceService } from '../services/resource.service';
 import { Contract } from '../models/Contract.model';
 import { DataState } from '../enumeration/DataState.enum';
+import { Employee } from '../models/Employee.model';
+import { HumanService } from '../services/human.service';
+import { error } from 'highcharts';
 
 @Component({
   selector: 'app-contract-list',
@@ -11,12 +14,11 @@ import { DataState } from '../enumeration/DataState.enum';
 })
 export class ContractListComponent implements OnInit, OnDestroy{
 
-  constructor(private resourceService:ResourceService){}
+  constructor(private resourceService:ResourceService, private humanService:HumanService){}
   currentPage:number = 1;
   contracts$?: Observable<Contract[]>;
   contractSubscription! : Subscription;
   dataState: DataState = DataState.LOADING;
-
   ngOnInit(): void {
     this.contracts$ = this.resourceService.listContract();
     this.contractSubscription = this.contracts$.subscribe(
@@ -27,6 +29,15 @@ export class ContractListComponent implements OnInit, OnDestroy{
   }
   ngOnDestroy(): void {
     this.contractSubscription.unsubscribe();
+  }
+
+  onFindHumanResourceManagerName(registrationNumber:string){
+    let rhName:string;
+    this.humanService.getEmployeeByRegistration(registrationNumber).subscribe(
+      (data) => rhName =`${data.firstName} ${data.name}`,
+      (error) => console.log(error)
+    )
+    return rhName;
   }
   pageChanged(event: number){
     window.scrollTo(0,200);

@@ -20,7 +20,7 @@
                 </div>
                 </div>
                 <p>Employee: {{contract.employee.firstName}} {{contract.employee.name}}</p>
-                <p>humanResourceMnager: {{contract.humanResourceMnager}} </p>
+                <p>humanResourceMnager: {{onFindHumanResourceManagerName(contract.humanResourceManager.registrationNumber)}} </p>
                 <p class="margin-auto badge badge-warning">{{contract.status}}</p>
                 <p style="text-decoration: underline; font-size: 0.8em;" class="badge badge-secondary">Ref N°= {{ contract.employee.registrationNumber | uppercase}}</p> 
                 <p class= "text-center py-2">
