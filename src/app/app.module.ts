@@ -23,6 +23,7 @@ import { DepartmentSlideComponent } from './department-list/department-slide/dep
 import { ChartBarComponent } from './dashboard/chart-bar/chart-bar.component';
 import { DonutChartComponent } from './dashboard/donut-chart/donut-chart.component';
 import { TimesheetComponent } from './timesheet/timesheet.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const appRoutes:Routes = [
   {path:'contracts',component:ContractListComponent},
@@ -33,6 +34,9 @@ const appRoutes:Routes = [
   {path:'timeOffRequests',component:TimeOffComponent},
   {path:'timesheets',component:TimesheetComponent},
   {path:'',component:DashboardComponent},
+  {path:'not-found',component:NotFoundComponent},
+  {path:'**',redirectTo:'/not-found'},
+
 ]
 @NgModule({
   declarations: [
@@ -50,6 +54,7 @@ const appRoutes:Routes = [
     ChartBarComponent,
     DonutChartComponent,
     TimesheetComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
