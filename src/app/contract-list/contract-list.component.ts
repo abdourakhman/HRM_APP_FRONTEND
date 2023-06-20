@@ -12,7 +12,7 @@ import { DataState } from '../enumeration/DataState.enum';
 export class ContractListComponent implements OnInit, OnDestroy{
 
   constructor(private resourceService:ResourceService){}
-  
+  currentPage:number = 1;
   contracts$?: Observable<Contract[]>;
   contractSubscription! : Subscription;
   dataState: DataState = DataState.LOADING;
@@ -27,6 +27,10 @@ export class ContractListComponent implements OnInit, OnDestroy{
   }
   ngOnDestroy(): void {
     this.contractSubscription.unsubscribe();
+  }
+  pageChanged(event: number){
+    window.scrollTo(0,200);
+    this.currentPage=event;
   }
 
 }

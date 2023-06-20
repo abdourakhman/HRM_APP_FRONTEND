@@ -8,7 +8,7 @@
     <div class="spinner"></div>
 </div>
 <div class="row" *ngIf="dataState === 'COMPLETE'">
-    <div class="col-md-5 p-2 m-5" *ngFor="let timeOff of timeOffs$ | async">
+    <div class="col-md-5 p-2 m-5" *ngFor="let timeOff of timeOffs$ | async | paginate: { itemsPerPage:6, currentPage:currentPage}">
         <div class="card card-primary card-outline">
             <div class="card-header">
                <h3 class="text-lg">REQUEST TIME OFF /  <span class="ml-3 text-sm ml-auto badge badge-warning">{{ timeOff.type }}</span></h3>
@@ -49,4 +49,16 @@
             </div>
          </div>
     </div>
+    <div class="mx-auto mt-2">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-end" >
+            <pagination-controls 
+            [responsive]="true"
+            [autoHide]="true"
+            [directionLinks]="true"
+            (pageChange)="currentPage = $event; pageChanged($event)">
+        </pagination-controls>
+            </ul>
+        </nav>
+   </div>
 </div>

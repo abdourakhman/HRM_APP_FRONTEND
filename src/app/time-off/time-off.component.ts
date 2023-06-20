@@ -10,7 +10,7 @@ import { DataState } from '../enumeration/DataState.enum';
   styleUrls: ['./time-off.component.css']
 })
 export class TimeOffComponent implements OnInit{
-
+  currentPage:number = 1;
   dataState:DataState = DataState.LOADING;
   timeOffs$! : Observable<timeOffRequest[]>;
   timeOffSubscription!:Subscription;
@@ -24,5 +24,8 @@ export class TimeOffComponent implements OnInit{
         ()=> this.dataState = DataState.COMPLETE
     )
   }
-
+  pageChanged(event: number){
+    window.scrollTo(0,200);
+    this.currentPage=event;
+  }
 }

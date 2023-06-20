@@ -9,7 +9,7 @@
         <div class="spinner"></div>
     </div>
     <div *ngIf="dataState === 'COMPLETE'" class="row">
-        <div class="col-sm-4 col-md-4 " *ngFor="let contract of contracts$ | async">
+        <div class="col-sm-4 col-md-4 " *ngFor="let contract of contracts$ | async | paginate: { itemsPerPage:12, currentPage:currentPage}">
 
             <div class="position-relative  rounded p-3 m-3" style="height: 210px; color: black; background-color: azure;">
                 <div class="ribbon-wrapper ribbon-xl">
@@ -34,5 +34,17 @@
                 </p>
             </div>        
         </div>
+       <div class="mx-auto mt-2">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end" >
+                <pagination-controls 
+                [responsive]="true"
+                [autoHide]="true"
+                [directionLinks]="true"
+                (pageChange)="currentPage = $event; pageChanged($event)">
+            </pagination-controls>
+                </ul>
+            </nav>
+       </div>
     </div>
 </div>
