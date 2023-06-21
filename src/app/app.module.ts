@@ -24,17 +24,19 @@ import { ChartBarComponent } from './dashboard/chart-bar/chart-bar.component';
 import { DonutChartComponent } from './dashboard/donut-chart/donut-chart.component';
 import { TimesheetComponent } from './timesheet/timesheet.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { EmployeeDetailComponent } from './employee/employee-detail/employee-detail.component';
 
 const appRoutes:Routes = [
   {path:'contracts',component:ContractListComponent},
   {path:'dashboard', component:DashboardComponent},
   {path:'departments',component:DepartmentListComponent},
   {path:'employees',component:EmployeeComponent},
+  {path:'employee/detail',component:EmployeeDetailComponent},
   {path:'jobs',component:JobListComponent},
   {path:'timeOffRequests',component:TimeOffComponent},
   {path:'timesheets',component:TimesheetComponent},
-  {path:'',component:DashboardComponent},
   {path:'not-found',component:NotFoundComponent},
+  {path:'',component:DashboardComponent},
   {path:'**',redirectTo:'/not-found'},
 
 ]
@@ -55,6 +57,7 @@ const appRoutes:Routes = [
     DonutChartComponent,
     TimesheetComponent,
     NotFoundComponent,
+    EmployeeDetailComponent,
   ],
   imports: [
     BrowserModule,

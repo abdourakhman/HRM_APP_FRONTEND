@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Input} from '@angular/core';
 import { DataState } from 'src/app/enumeration/DataState.enum';
 import { Employee } from 'src/app/models/Employee.model';
 import { HumanService } from 'src/app/services/human.service';
@@ -12,7 +12,7 @@ export class EmployeeProfilComponent implements OnInit{
 
   constructor(private humanService : HumanService){}
   
-  employee: Employee;
+  @Input() employee?: Employee;
   dataState:DataState = DataState.LOADING
   ngOnInit(): void {
     this.humanService.selectedEmployee$.subscribe(

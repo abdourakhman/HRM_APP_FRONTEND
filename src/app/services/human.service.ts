@@ -17,6 +17,15 @@ export class HumanService{
     selectedEmployee:Employee
     employees:Employee[];
 
+    listEmployees():Observable<Employee[]>{
+        return this.http.get<Employee[]>(`${this.myApiUrl}/employees`).pipe(
+            tap(
+                (employee)=> console.log(employee)
+            ),
+            catchError(this.handleError)
+        )
+    }
+
     getEmployeeByRegistration(registrationNumber:string):Observable<Employee>{
         return this.http.get<Employee>(`${this.myApiUrl}/employee/${registrationNumber}`).pipe(
             tap(
@@ -86,7 +95,7 @@ export class HumanService{
         );
     }
     getNumberOfEmployeesByGender(){
-        return this.http.get<any>(`${this.myApiUrl}/numberOfEmployees/gender`).pipe(
+        return this.http.get<Map<string,number>>(`${this.myApiUrl}/numberOfEmployees/gender`).pipe(
             tap((data)=> console.log(data)),
             catchError(this.handleError)
         );

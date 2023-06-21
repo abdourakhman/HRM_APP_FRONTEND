@@ -1,0 +1,186 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mt-3 mx-auto">
+            <div class="card card-primary card-outline">
+                <div class="card-body box-profile" *ngIf="employee">
+                   <div class="text-center">          
+                     <img class="profile-user-img img-fluid img-circle" [src]="employee.photoUrl" alt="User profile picture">
+                   </div>
+                   <h3 class="profile-username text-center">{{ employee.firstName}} {{ employee.name}}</h3>
+                   <p class="text-muted text-center">{{ employee.job.title}}</p>
+                </div>
+             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-7  w-100">
+            <div class="card card-primary py-0"style="min-height: 407px;">
+                <div class="card-header badge py-0"  >
+                   <h3 class="text-center text-lg">Personnal Info</h3>
+                </div> 
+                <div class="card-body" *ngIf="employee">
+                    <strong><i class="fas fa-at mr-1"></i> Email</strong>
+                   <p class="text-muted">
+                         {{employee.email}}
+                   </p>
+                   <hr>
+                  <strong *ngIf="employee.gender==='FEMALE'"><i class="fas fa-venus mr-1" ></i> Gender</strong>
+                  <strong *ngIf="employee.gender==='MALE'"><i class="fas fa-mars mr-1"></i> Gender</strong>
+                   <p class="text-muted">
+                      <span class="badge badge-primary">
+                         {{employee.gender}}
+                      </span>
+                   </p>
+                   <hr>
+                  <strong><i class="fas fa-birthday-cake mr-1"></i> Birthday</strong>
+                   <p class="text-muted">
+                      {{employee.birthday}}
+                   </p>
+                   <hr>
+                   <strong><i class="fas fa-mobile mr-1"></i> Telephone</strong>
+                   <p class="text-muted">
+                      {{employee.telephone}}
+                   </p>
+                   <hr>
+                   <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
+                   <p class="text-muted">{{ employee.address}}</p>
+                   <hr>
+                   <strong><i class="fas fa-calendar mr-1"></i> Date Hiring</strong>
+                   <p class="text-muted">{{ employee.hiringDate}}</p>
+                   <hr>
+                   <strong><i class="fas fa-building mr-1"></i> Department</strong>
+                   <p class="text-muted">{{ employee.department.name}}</p>
+                   <hr>
+                    <strong><i class="fa fa-barcode mr-1"></i>Number Registration</strong>
+                    <p class="text-muted">{{ employee.registrationNumber}}</p>
+                    <hr>
+                   <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
+                   <p class="text-muted">
+                      <span class="tag tag-danger">{{ employee.job.skills}}</span>
+                   </p>
+                   <hr>
+                   <strong><i class="fas fa-pencil-alt mr-1"></i> Level od responsibility</strong>
+                   <p class="badge badge-primary" >
+                    {{ employee.job.levelOfResponsibility}}
+                   </p>
+                   <hr>
+                   <strong class="mr-1"><i class="far fa-file-alt"></i> Status</strong>
+                   <p class="badge badge-success" *ngIf="employee.status=='ACTIVE'">
+                     {{employee.status}}
+                   </p>
+                   <p class="badge badge-danger" *ngIf="employee.status=='INACTIVE'">
+                     {{employee.status}}
+                   </p>
+                </div>
+             </div>
+        </div>
+        <div class="col-md-5">
+            <div  id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" >
+                <ol class="carousel-indicators">
+                 <p>
+                 </p> 
+                </ol>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <div style="display: flex; flex-direction: row; justify-content: space-around;" class="mb-3">
+                        <div class="card card-primary card-outline">
+                            <div class="card-header">
+                               <h3 class="text-lg">TIMESHEET <span class="ml-3 text-sm ml-auto badge badge-success"><i class="fa fa-address-book"></i>
+                               </span></h3>
+                            </div>
+                            <div class="card-body">
+                               <strong><i class="fas fa-user mr-1"></i> {{ employee.firstName }} {{ employee.name }}</strong>
+                               <p class="text-muted">
+                                 JobName - DepartmentName
+                               </p>
+                               <hr>
+                               <strong><i class="fas fa-calendar mr-1"></i>Absence</strong>
+                               <p class="text-muted"><p>
+                               <hr>
+                               <strong><i class="fas fa-hourglass mr-1"></i> Period</strong>
+                               <div class="text-muted row">
+                                    <div class="col-md-6">
+                                        <span class="tag tag-danger">hours worked: </span>
+                                        <span class="tag tag-success">H</span>
+                                    </div>
+                               </div>
+                               <hr>
+                               <strong><i class="fa fa-comment mr-1"></i> Reason</strong>
+                               <p class="text-muted">No comment specified !</p>
+                            </div>
+                         </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div style="display: flex; flex-direction: row; justify-content: space-around;" class="my-2">
+                        <p class="border text-center rounded" style="width:200px; flex-wrap: nowrap; background-color: darkgoldenrod; color: black; cursor:pointer;">
+                        </p>
+                    </div>
+                  </div>
+                </div>
+                <a class="carousel-control-prev mb-3" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next mb-3" href="#carouselExampleIndicators" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+            </div>
+            <hr>
+            <div  id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" >
+                <ol class="carousel-indicators">
+                 <p>
+                 </p> 
+                </ol>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <div style="display: flex; flex-direction: row; justify-content: space-around;" class="my-4">
+                        <div class="card card-primary card-outline">
+                            <div class="card-header">
+                                <h3 class="text-lg">REQUEST TIME OFF</h3>
+                            </div>
+                            <div class="card-body">
+                               <strong><i class="fas fa-user mr-1"></i> {{ employee.firstName }} {{ employee.name }}</strong>
+                               <p class="text-muted">
+                                 JobName - DepartmentName
+                               </p>
+                               <hr>
+                               <strong><i class="fas fa-calendar mr-1"></i>Absence</strong>
+                               <p class="text-muted"><p>
+                               <hr>
+                               <strong><i class="fas fa-hourglass mr-1"></i> Period</strong>
+                               <div class="text-muted row">
+                                    <div class="col-md-6">
+                                        <span class="tag tag-danger">hours worked: </span>
+                                        <span class="tag tag-success">H</span>
+                                    </div>
+                               </div>
+                               <hr>
+                               <strong><i class="fa fa-comment mr-1"></i> Reason</strong>
+                               <p class="text-muted">No comment specified !</p>
+                            </div>
+                         </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div style="display: flex; flex-direction: row; justify-content: space-around;" class="my-4">
+                        <p class="border text-center rounded" style="width:200px; flex-wrap: nowrap; background-color: darkgoldenrod; color: black; cursor:pointer;">
+                        </p>
+                    </div>
+                  </div>
+                </div>
+                <a class="carousel-control-prev mb-3" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next mb-3" href="#carouselExampleIndicators" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <p>Date din contrat :</p>
+    <p>Autresinfos connexes :</p>
+</div>

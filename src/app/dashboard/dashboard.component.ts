@@ -9,6 +9,8 @@ import { ResourceService } from '../services/resource.service';
 })
 export class DashboardComponent implements OnInit{
   numberOfEmployees : number =0;
+  numberOfMan:number = 0;
+  numberOfWoman:number = 0;
   numberOfActiveEmployees : number =0;
   averageAgeOfEmployee : number = 0;
   averageSalary : number = 0;
@@ -16,8 +18,6 @@ export class DashboardComponent implements OnInit{
   departmentNames: string[];
   numberOfEmployeesByDepartment : any[];
   numberOfEmployeesByJob :any ;
-  numberOfEmployeesByGender : any;
-
   constructor(private humanService: HumanService, private resourceService : ResourceService){}
 
   ngOnInit(): void {
@@ -30,8 +30,6 @@ export class DashboardComponent implements OnInit{
           const mapData = new Map<string, number>(Object.entries(data));          
           this.departmentNames = Array.from(mapData.keys());
           this.numberOfEmployeesByDepartment= Array.from(mapData.values());
-          console.log(this.departmentNames);
-          console.log(this.numberOfEmployeesByDepartment);
         },
         (error) => {
           console.error(error);
@@ -46,7 +44,14 @@ export class DashboardComponent implements OnInit{
       )
 
       this.humanService.getNumberOfEmployeesByGender().subscribe(
-        (data) => {this.numberOfEmployeesByGender = data}
+        (data) => {const mapData = new Map<string, number>(Object.entries(data));          
+        // Men then Women
+        this.numberOfMan = Array.from(mapData.values())[0];
+        this.numberOfWoman  = Array.from(mapData.values())[1];
+      },
+      (error) => {
+        console.error(error);
+      }
       )
 
       this.humanService.getAverageAgeOfEmployees().subscribe(
@@ -61,4 +66,5 @@ export class DashboardComponent implements OnInit{
         (data) => this .numberOfOngoingProject = data
       )
   }
+
 }
