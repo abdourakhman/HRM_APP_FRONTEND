@@ -19,8 +19,16 @@ export class ResourceService{
         )
     }
 
-    listTimeOffRequest(): Observable<TimeOffRequest[]>{
-        return this.http.get<TimeOffRequest[]>(`${this.myApiUrl}/timeOffRequests`).pipe(
+    findEmployeeContract(employeeID:number): Observable<Contract[]>{
+      return this.http.get<Contract[]>(`${this.myApiUrl}/contracts/employee/${employeeID}`).pipe(
+          tap(console.log),
+          catchError(this.handleError)
+      )
+  }
+
+
+    listTimeOffRequest(slug:string): Observable<TimeOffRequest[]>{
+        return this.http.get<TimeOffRequest[]>(`${this.myApiUrl}/${slug}`).pipe(
             tap(console.log),
             catchError(this.handleError)
         )
@@ -40,8 +48,8 @@ export class ResourceService{
         )
     }
 
-    listTimesheets(): Observable<Timesheet[]> {
-        return this.http.get<Timesheet[]>(`${this.myApiUrl}/timesheets`).pipe(
+    listTimesheets(slug:string): Observable<Timesheet[]> {
+        return this.http.get<Timesheet[]>(`${this.myApiUrl}/${slug}`).pipe(
           map((timesheets: Timesheet[]) => {
             return timesheets.map((timesheet: Timesheet) => {
               // Convertir la durée en objet Date
@@ -62,6 +70,7 @@ export class ResourceService{
         );
       }
       
+
    
       
     handleError(error: HttpErrorResponse): Observable<never> {

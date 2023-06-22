@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-12 mt-3 mx-auto">
+        <div class="col-md-7 mt-3">
             <div class="card card-primary card-outline">
                 <div class="card-body box-profile" *ngIf="employee">
                    <div class="text-center">          
@@ -11,6 +11,22 @@
                 </div>
              </div>
         </div>
+        <div class="col-md-3 mt-3 offset-1">
+          <div class="card card-primary card-outline" *ngFor="let contract of contracts">
+              <div class="card-body box-profile" *ngIf="employee">
+                <div class="ribbon-wrapper ribbon-lg">
+                  <div class="ribbon text-sm bg-white">
+                    {{contract.type}}
+                  </div>
+                </div>
+                <h4 class="text-center my-2" style="text-decoration: underline;">Contract</h4>
+                <p class="text-muted">Etablished: {{ contract.start}}</p>
+                <p class="text-muted text-danger" *ngIf="contract.type === 'CDI'">Expiration: Indeterminé</p>
+                <p class="text-muted text-danger" *ngIf="contract.type !== 'CDI'">Expiration: {{ contract.end}}</p>
+                <p class="text-muted text-center text-sm bg-black">C{{ contract.id}}/{{employee.registrationNumber}}</p>
+              </div>
+           </div>
+      </div>
     </div>
     <div class="row">
         <div class="col-md-7  w-100">
@@ -24,13 +40,11 @@
                          {{employee.email}}
                    </p>
                    <hr>
-                  <strong *ngIf="employee.gender==='FEMALE'"><i class="fas fa-venus mr-1" ></i> Gender</strong>
-                  <strong *ngIf="employee.gender==='MALE'"><i class="fas fa-mars mr-1"></i> Gender</strong>
-                   <p class="text-muted">
+                  <strong *ngIf="employee.gender==='FEMALE'"><i class="fas fa-venus mr-1" ></i> Gender </strong>
+                  <strong *ngIf="employee.gender==='MALE'"><i class="fas fa-mars mr-1"></i> Gender </strong>
                       <span class="badge badge-primary">
                          {{employee.gender}}
                       </span>
-                   </p>
                    <hr>
                   <strong><i class="fas fa-birthday-cake mr-1"></i> Birthday</strong>
                    <p class="text-muted">
@@ -59,7 +73,7 @@
                       <span class="tag tag-danger">{{ employee.job.skills}}</span>
                    </p>
                    <hr>
-                   <strong><i class="fas fa-pencil-alt mr-1"></i> Level od responsibility</strong>
+                   <strong><i class="fa fa-graduation-cap mr-1"></i> Level of responsibility </strong>
                    <p class="badge badge-primary" >
                     {{ employee.job.levelOfResponsibility}}
                    </p>
@@ -169,7 +183,7 @@
                     <div style="display: flex; flex-direction: row; justify-content: space-around;" class="my-2"> 
                       <div class="card card-primary card-outline" style="min-width: 250px;">
                         <div class="card-header">
-                           <h3 class="text-lg">REQUEST TIME OFF <span class="ml-3 text-sm ml-auto badge badge-warning"> type</span>
+                           <h3 class="text-lg">REQUEST TIME OFF <span class="ml-3 text-sm ml-auto badge badge-warning"> //</span>
                            </h3>
                         </div>
                         <div class="card-body">
@@ -246,5 +260,4 @@
             
         </div>
     </div>
-    <p>Autresinfos connexes :</p>
 </div>

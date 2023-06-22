@@ -16,7 +16,7 @@ export class TimesheetComponent implements OnInit{
   dataState : DataState  = DataState.LOADING;
   timesheet$ : Observable<Timesheet[]>
   ngOnInit(): void {
-    this.timesheet$ = this.resourceService.listTimesheets();
+    this.timesheet$ = this.resourceService.listTimesheets("timesheets");
     this.timesheet$.subscribe(
       (data) => console.log(data),
       ()=>this.dataState = DataState.ERROR,

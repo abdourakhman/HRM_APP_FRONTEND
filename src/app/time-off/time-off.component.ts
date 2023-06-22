@@ -16,7 +16,7 @@ export class TimeOffComponent implements OnInit{
   constructor(private resourceService: ResourceService){}
   
   ngOnInit(): void {
-    this.timeOffs$ = this.resourceService.listTimeOffRequest();
+    this.timeOffs$ = this.resourceService.listTimeOffRequest("timeOffRequests");
     this.timeOffs$.subscribe(
         ()=> console.log,
         ()=> this.dataState = DataState.ERROR,
