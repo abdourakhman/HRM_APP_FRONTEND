@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ResourceService } from '../services/resource.service';
 import { Observable, Subscription } from 'rxjs';
-import { timeOffRequest } from '../models/TimeOffRequest.model';
+import { TimeOffRequest } from '../models/TimeOffRequest.model';
 import { DataState } from '../enumeration/DataState.enum';
 
 @Component({
@@ -12,7 +12,7 @@ import { DataState } from '../enumeration/DataState.enum';
 export class TimeOffComponent implements OnInit{
   currentPage:number = 1;
   dataState:DataState = DataState.LOADING;
-  timeOffs$! : Observable<timeOffRequest[]>;
+  timeOffs$! : Observable<TimeOffRequest[]>;
   constructor(private resourceService: ResourceService){}
   
   ngOnInit(): void {

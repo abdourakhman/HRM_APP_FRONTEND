@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HumanService } from '../services/human.service';
 
 @Component({
   selector: 'app-employee',
@@ -7,6 +8,9 @@ import { Component } from '@angular/core';
 })
 export class EmployeeComponent {
 
-  constructor(){}
+  constructor(private humanService:HumanService){}
   
+  onIsEmployeeSelected(){
+    return this.humanService.isEmployeeSelected()
+  }
 }

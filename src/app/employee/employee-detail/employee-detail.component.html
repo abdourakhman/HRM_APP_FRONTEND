@@ -75,46 +75,74 @@
              </div>
         </div>
         <div class="col-md-5">
-            <div  id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" >
-                <ol class="carousel-indicators">
-                 <p>
-                 </p> 
-                </ol>
+            <div *ngIf="dataState === 'ERROR'" class="mx-auto mt-5">
+              <div class="error p-3 rounded">Erreur rencontrée !</div>
+            </div>
+            <div *ngIf="dataState === 'LOADING'"  class="mx-auto mt-5">
+                <div class="spinner"></div>
+            </div>
+            <div *ngIf="dataState === 'COMPLETE'" id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" >
                 <div class="carousel-inner">
                   <div class="carousel-item active">
                     <div style="display: flex; flex-direction: row; justify-content: space-around;" class="mb-3">
-                        <div class="card card-primary card-outline">
-                            <div class="card-header">
-                               <h3 class="text-lg">TIMESHEET <span class="ml-3 text-sm ml-auto badge badge-success"><i class="fa fa-address-book"></i>
-                               </span></h3>
-                            </div>
-                            <div class="card-body">
-                               <strong><i class="fas fa-user mr-1"></i> {{ employee.firstName }} {{ employee.name }}</strong>
-                               <p class="text-muted">
-                                 JobName - DepartmentName
-                               </p>
-                               <hr>
-                               <strong><i class="fas fa-calendar mr-1"></i>Absence</strong>
-                               <p class="text-muted"><p>
-                               <hr>
-                               <strong><i class="fas fa-hourglass mr-1"></i> Period</strong>
-                               <div class="text-muted row">
-                                    <div class="col-md-6">
-                                        <span class="tag tag-danger">hours worked: </span>
-                                        <span class="tag tag-success">H</span>
-                                    </div>
-                               </div>
-                               <hr>
-                               <strong><i class="fa fa-comment mr-1"></i> Reason</strong>
-                               <p class="text-muted">No comment specified !</p>
-                            </div>
+                      <div class="card card-primary card-outline" style="min-width: 280px;">
+                        <div class="card-header">
+                          <h3 class="text-lg">TIMESHEET <span class="ml-3 text-sm ml-auto badge badge-success"><i class="fa fa-address-book"></i>
+                          </span></h3>
+                       </div>
+                       <div class="card-body">
+                         <strong><i class="fas fa-user mr-1"></i> {{ employee.firstName }} {{ employee.name }}</strong>
+                         <p class="text-muted">
+                          {{employee.department.name}}
+                         </p>
+                         <hr>
+                         <strong><i class="fas fa-calendar mr-1"></i>Absence</strong>
+                         <p class="text-muted">// <p>
+                         <hr>
+                         <strong><i class="fas fa-hourglass mr-1"></i> Period</strong>
+                         <div class="text-muted row">
+                              <div class="col-md-6">
+                                  <span class="tag tag-danger">hours worked: </span>
+                                  //
+                              </div>
                          </div>
+                         <hr>
+                         <strong><i class="fa fa-comment mr-1"></i> Reason</strong>
+                         //
+                       </div>
+                      </div>
                     </div>
                   </div>
-                  <div class="carousel-item">
-                    <div style="display: flex; flex-direction: row; justify-content: space-around;" class="my-2">
-                        <p class="border text-center rounded" style="width:200px; flex-wrap: nowrap; background-color: darkgoldenrod; color: black; cursor:pointer;">
-                        </p>
+                  <div class="carousel-item" *ngFor="let timesheet of timesheets">
+                    <div style="display: flex; flex-direction: row; justify-content: space-around;" class="my-2"> 
+                        <div class="card card-primary card-outline" style="min-width: 280px;">
+                          <div class="card-header">
+                             <h3 class="text-lg">TIMESHEET <span class="ml-3 text-sm ml-auto badge badge-success"><i class="fa fa-address-book"></i>
+                             </span></h3>
+                          </div>
+                          <div class="card-body">
+                            <strong><i class="fas fa-user mr-1"></i> {{ timesheet.employee.firstName }} {{ timesheet.employee.name }}</strong>
+                            <p class="text-muted">
+                              {{ employee.job.title }}
+                            </p>
+                            <hr>
+                            <strong><i class="fas fa-calendar mr-1"></i>Absence</strong>
+                            <p class="text-muted">{{timesheet.absence}} <p>
+                            <hr>
+                            <strong><i class="fas fa-hourglass mr-1"></i> Period</strong>
+                            <div class="text-muted row">
+                                 <div class="col-md-6">
+                                     <span class="tag tag-danger">hours worked: </span>
+                                     <span *ngIf="timesheet.hoursWorked" class="tag tag-success">{{timesheet.hoursWorked | date :'HH'}}H</span>
+                                     <span  *ngIf="!timesheet.hoursWorked" class="tag tag-success">Néant //</span>
+                                 </div>
+                            </div>
+                            <hr>
+                            <strong><i class="fa fa-comment mr-1"></i> Reason</strong>
+                            <p class="text-muted" *ngIf="timesheet.comment">{{ timesheet.comment }}</p>
+                            <p class="text-muted" *ngIf="!timesheet.comment">No comment specified !</p>
+                          </div>
+                       </div>
                     </div>
                   </div>
                 </div>
@@ -127,60 +155,96 @@
                   <span class="sr-only">Next</span>
                 </a>
             </div>
+
             <hr>
-            <div  id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" >
-                <ol class="carousel-indicators">
-                 <p>
-                 </p> 
-                </ol>
+            <div *ngIf="dataState === 'ERROR'" class="mx-auto mt-5">
+              <div class="error p-3 rounded">Erreur rencontrée !</div>
+            </div>
+            <div *ngIf="dataState === 'LOADING'"  class="mx-auto mt-5">
+                <div class="spinner"></div>
+            </div>
+            <div *ngIf="dataState === 'COMPLETE'" id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel" >
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <div style="display: flex; flex-direction: row; justify-content: space-around;" class="my-4">
-                        <div class="card card-primary card-outline">
-                            <div class="card-header">
-                                <h3 class="text-lg">REQUEST TIME OFF</h3>
-                            </div>
-                            <div class="card-body">
-                               <strong><i class="fas fa-user mr-1"></i> {{ employee.firstName }} {{ employee.name }}</strong>
-                               <p class="text-muted">
-                                 JobName - DepartmentName
-                               </p>
-                               <hr>
-                               <strong><i class="fas fa-calendar mr-1"></i>Absence</strong>
-                               <p class="text-muted"><p>
-                               <hr>
-                               <strong><i class="fas fa-hourglass mr-1"></i> Period</strong>
-                               <div class="text-muted row">
-                                    <div class="col-md-6">
-                                        <span class="tag tag-danger">hours worked: </span>
-                                        <span class="tag tag-success">H</span>
-                                    </div>
+                    <div style="display: flex; flex-direction: row; justify-content: space-around;" class="my-2"> 
+                      <div class="card card-primary card-outline" style="min-width: 250px;">
+                        <div class="card-header">
+                           <h3 class="text-lg">REQUEST TIME OFF <span class="ml-3 text-sm ml-auto badge badge-warning"> type</span>
+                           </h3>
+                        </div>
+                        <div class="card-body">
+                          <strong><i class="fas fa-user mr-1"></i> {{ employee.firstName }} {{ employee.name }}</strong>
+                          <p class="text-muted">
+                            {{ employee.job.title }}
+                          </p>
+                          <hr>
+                          <strong><i class="fas fa-calendar mr-1"></i> Date of request </strong>
+                          <p class="text-muted">// <p>
+                          <hr>
+                          <strong><i class="fas fa-hourglass mr-1"></i> Period</strong>
+                          <div class="text-muted row">
+                               <div class="col-md-12">
+                                   <span class="tag tag-danger">Desired start: </span>
+                                   <span class="tag tag-success">//</span>
                                </div>
-                               <hr>
-                               <strong><i class="fa fa-comment mr-1"></i> Reason</strong>
-                               <p class="text-muted">No comment specified !</p>
-                            </div>
-                         </div>
-                    </div>
+                               <div class="col-md-12">
+                                   <span class="tag tag-info">Desired end: </span>
+                                   <span class="tag tag-warning">//</span>
+                               </div> 
+                          </div>
+                          <hr>
+                          <strong><i class="fa fa-comment mr-1"></i> Reason</strong>
+                          //
+                       </div>
+                     </div>
                   </div>
-                  <div class="carousel-item">
-                    <div style="display: flex; flex-direction: row; justify-content: space-around;" class="my-4">
-                        <p class="border text-center rounded" style="width:200px; flex-wrap: nowrap; background-color: darkgoldenrod; color: black; cursor:pointer;">
-                        </p>
+                  </div>
+                  <div class="carousel-item" *ngFor="let timeOff of timeoffs">
+                    <div style="display: flex; flex-direction: row; justify-content: space-around;" class="my-2"> 
+                        <div class="card card-primary card-outline" style="min-width: 250px; max-width: 300px;">
+                          <div class="card-header">
+                             <h3 class="text-lg">REQUEST TIME OFF /  <span class="ml-3 text-sm ml-auto badge badge-warning">{{ timeOff.type }}</span>
+                             </h3>
+                          </div>
+                          <div class="card-body">
+                            <strong><i class="fas fa-user mr-1"></i> {{ timeOff.employee.firstName }} {{ timeOff.employee.name }}</strong>
+                            <p class="text-muted">
+                              JobName - DepartmentName
+                            </p>
+                            <strong><i class="fas fa-calendar mr-1"></i> Date of request </strong>
+                            <p class="text-muted">{{ timeOff.requestDate }} <p>
+                            <hr>
+                            <strong><i class="fas fa-hourglass mr-1"></i> Period</strong>
+                            <div class="text-muted row">
+                                 <div class="col-md-12">
+                                     <span class="tag tag-danger">Desired start: </span>
+                                     <span class="tag tag-success">{{ timeOff.desiredStartDate }}</span>
+                                 </div>
+                                 <div class="col-md-12">
+                                     <span class="tag tag-info">Desired end: </span>
+                                     <span class="tag tag-warning">{{ timeOff.desiredEndDate }}</span>
+                                 </div> 
+                            </div>
+                            <hr>
+                            <strong><i class="fa fa-comment mr-1"></i> Reason</strong>
+                            <p class="text-muted" *ngIf="timeOff.reason">{{ timeOff.reason }}</p>
+                            <p class="text-muted" *ngIf="!timeOff.reason">No reason specified !</p>
+                         </div>
+                       </div>
                     </div>
                   </div>
                 </div>
-                <a class="carousel-control-prev mb-3" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <a class="carousel-control-prev mb-3" href="#carouselExampleIndicators2" role="button" data-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                   <span class="sr-only">Previous</span>
                 </a>
-                <a class="carousel-control-next mb-3" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <a class="carousel-control-next mb-3" href="#carouselExampleIndicators2" role="button" data-slide="next">
                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
                   <span class="sr-only">Next</span>
                 </a>
             </div>
+            
         </div>
     </div>
-    <p>Date din contrat :</p>
     <p>Autresinfos connexes :</p>
 </div>

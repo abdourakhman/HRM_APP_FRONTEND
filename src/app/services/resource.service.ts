@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, catchError, map, tap, throwError } from "rxjs";
 import { Contract } from "../models/Contract.model";
-import { timeOffRequest } from "../models/TimeOffRequest.model";
+import { TimeOffRequest } from "../models/TimeOffRequest.model";
 import { Timesheet } from "../models/Timesheet.model";
 
 @Injectable()
@@ -19,8 +19,8 @@ export class ResourceService{
         )
     }
 
-    listTimeOffRequest(): Observable<timeOffRequest[]>{
-        return this.http.get<timeOffRequest[]>(`${this.myApiUrl}/timeOffRequests`).pipe(
+    listTimeOffRequest(): Observable<TimeOffRequest[]>{
+        return this.http.get<TimeOffRequest[]>(`${this.myApiUrl}/timeOffRequests`).pipe(
             tap(console.log),
             catchError(this.handleError)
         )

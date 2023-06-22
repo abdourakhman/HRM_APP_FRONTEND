@@ -3,7 +3,7 @@ import { TypeTimeOff } from "../enumeration/TypeTimeOff.enum";
 import { Employee } from "./Employee.model";
 import { HumanResourceManager } from "./HumanResourceManager.model";
 
-export class timeOffRequest{
+export class TimeOffRequest{
 
     constructor(
         public id:number,

@@ -65,7 +65,12 @@ export class HumanService{
         catchError(this.handleError)
     );
     }
-
+    isEmployeeSelected():boolean{
+        if(this.selectedEmployee)
+            return true;
+        else
+            return false;
+    }
     getNumberOfEmployees(){
         return this.http.get<number>(`${this.myApiUrl}/numberOfEmployees`).pipe(
             tap((data)=> console.log(data)),

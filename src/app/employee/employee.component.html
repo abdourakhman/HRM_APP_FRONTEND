@@ -22,7 +22,11 @@
         </div>
         <div class="col-md-3">
             <app-employee-profil></app-employee-profil>
-            <a class="btn btn-outline-primary  w-50 mx-auto rounded " routerLink="/employee/detail">View More</a>
+            <div class="w-50 ml-auto">
+                <a class="btn btn-block btn-sm  btn-warning" [hidden] ="!onIsEmployeeSelected()" routerLink="/employee/detail">
+                    <i class="fa fa-eye"></i> View More ...
+                </a>
+            </div>
         </div>
      </div>
   </div>
