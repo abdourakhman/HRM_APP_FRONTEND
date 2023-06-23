@@ -11,6 +11,9 @@ export class DashboardComponent implements OnInit{
   numberOfEmployees : number =0;
   numberOfMan:number = 0;
   numberOfWoman:number = 0;
+  numberOfCDD : number = 0;
+  numberOfCDI : number = 0;
+  numberOfAlternation : number = 0 ; 
   numberOfActiveEmployees : number =0;
   averageAgeOfEmployee : number = 0;
   averageSalary : number = 0;
@@ -65,6 +68,17 @@ export class DashboardComponent implements OnInit{
       this.resourceService.getNumberOngoingProject().subscribe(
         (data) => this .numberOfOngoingProject = data
       )
+
+      this.resourceService.getNumberDistintContract().subscribe(
+        (data) => {const mapData = new Map<string, number>(Object.entries(data));          
+        // Men then Women
+        this.numberOfCDD = Array.from(mapData.values())[0];
+        this.numberOfCDI  = Array.from(mapData.values())[1];
+        this.numberOfAlternation  = Array.from(mapData.values())[2];
+      },
+      (error) => {
+        console.error(error);
+      })
   }
 
 }

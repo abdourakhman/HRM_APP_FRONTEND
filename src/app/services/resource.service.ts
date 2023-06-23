@@ -69,7 +69,13 @@ export class ResourceService{
           catchError(this.handleError)
         );
       }
-      
+
+      getNumberDistintContract(){
+        return this.http.get<Map<string,number>>(`${this.myApiUrl}/contracts/distinct`).pipe(
+          tap((data)=> console.log(data)),
+          catchError(this.handleError)
+      );
+      }
 
    
       
