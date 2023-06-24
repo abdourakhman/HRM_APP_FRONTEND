@@ -1,0 +1,35 @@
+<div class="container w-75">
+    <div class="card card-warning" style="margin-top: 8% !important;">
+        <div class="card-header">
+            <div class="card-title" style="text-align: center !important;">
+                <h5>Save New Job</h5>
+            </div>
+        </div>
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="title"><code class="ml-3">Title</code></label>
+                    <input  required type="text" name="title" class="form-control form-control-border border-width-2" id="title" placeholder="Enter  the title's job" ngModel>
+                </div>
+                <div class="form-group col-md-6 offset-3">
+                    <label for="levelOfResponsibility"><code class="ml-3">Level Of Responsibility</code></label>
+                    <select required ngModel name="levelOfResponsibility" class="custom-select form-control-border border-width-2" id="levelOfResponsibility">
+                       <option value="HIGH">Haut</option>
+                       <option value="MEDIUM">Moyen</option>
+                       <option value="LOW">Bas</option>
+                    </select>
+                 </div>   
+                <div class="form-group col-md-12">
+                    <label for="skills"><code class="ml-3">Skills</code></label>
+                    <textarea  required type="text" name="skills" class="form-control form-control-border border-width-2" id="skills" placeholder="Enter the required skills of this job"  ngModel></textarea>
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="description"><code class="ml-3">Description</code></label>
+                    <textarea  required type="text" name="description" class="form-control form-control-border border-width-2" id="description" placeholder="Enter the  description of this job"  ngModel></textarea>
+                </div>
+            </div>
+            <button type="submit" [disabled]="f.invalid" class="btn btn-primary">Save <i class="fa fa-plus"></i>
+            </button>
+        </form>
+    </div>
+</div>

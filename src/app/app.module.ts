@@ -28,6 +28,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { EmployeeDetailComponent } from './employee/employee-detail/employee-detail.component';
 import { HiringComponent } from './employee/hiring/hiring.component';
 import { FormComponent } from './contract/form/form.component';
+import { JobAddComponent } from './job-list/job-add/job-add.component';
 
 
 const appRoutes:Routes = [
@@ -39,6 +40,7 @@ const appRoutes:Routes = [
   {path:'employee/detail',component:EmployeeDetailComponent},
   {path:'employee/hiring',component:HiringComponent},
   {path:'jobs',component:JobListComponent},
+  {path:'job/add',component:JobAddComponent},
   {path:'timeOffRequests',component:TimeOffComponent},
   {path:'timesheets',component:TimesheetComponent},
   {path:'not-found',component:NotFoundComponent},
@@ -66,6 +68,7 @@ const appRoutes:Routes = [
     EmployeeDetailComponent,
     HiringComponent,
     FormComponent,
+    JobAddComponent,
   ],
   imports: [
     BrowserModule,

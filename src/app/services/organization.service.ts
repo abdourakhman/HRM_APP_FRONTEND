@@ -11,6 +11,13 @@ export class OrganizationService{
 
     constructor(private http: HttpClient){}
 
+    saveJob(job){
+        return this.http.post(`${this.myApiUrl}/job`,job).pipe(
+            tap(console.log),
+            catchError(this.handleError)
+        )
+    }
+
     listDepartment():Observable<Department[]>{
         return this.http.get<Department[]>(`${this.myApiUrl}/departments`).pipe(
             tap(console.log),
