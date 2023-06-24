@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, catchError, map, tap, throwError } from "rxjs";
 import { Contract } from "../models/Contract.model";
@@ -7,12 +7,17 @@ import { Timesheet } from "../models/Timesheet.model";
 
 @Injectable()
 export class ResourceService{
-
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
     constructor(private http:HttpClient){}
 
     private readonly myApiUrl = "http://localhost:8082/api";
 
     listContract(): Observable<Contract[]>{
+      
         return this.http.get<Contract[]>(`${this.myApiUrl}/contracts`).pipe(
             tap(console.log),
             catchError(this.handleError)
@@ -77,6 +82,12 @@ export class ResourceService{
       );
       }
 
+      saveContract(contract:Contract){
+        return this.http.post<Contract>(`${this.myApiUrl}/contract`,contract,this.httpOptions).pipe(
+          tap((data)=> console.log(data)),
+          catchError(this.handleError)
+        );
+      }
    
       
     handleError(error: HttpErrorResponse): Observable<never> {

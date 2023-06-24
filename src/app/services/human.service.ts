@@ -1,11 +1,18 @@
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, Subject, catchError, tap, throwError } from "rxjs";
 import { Employee } from "../models/Employee.model";
+import { Manager } from "../models/Manager.model";
 
 
 @Injectable()
 export class HumanService{
+    
+    private httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        })
+      };
 
     constructor(private http:HttpClient){}
 
@@ -15,7 +22,17 @@ export class HumanService{
     employee$ = this.employeeSubject.asObservable();
     selectedEmployee$ = this.selectedEmployeeSubject.asObservable();
     selectedEmployee:Employee
+    employeeToSave: Employee;
     employees:Employee[];
+
+    saveEmployee(){
+        return this.http.post<Employee>(`${this.myApiUrl}/employee`,this.employeeToSave,this.httpOptions).pipe(
+            tap(
+                (employee)=> console.log(employee)
+            ),
+            catchError(this.handleError)
+        )
+    }
 
     listEmployees():Observable<Employee[]>{
         return this.http.get<Employee[]>(`${this.myApiUrl}/employees`).pipe(
@@ -112,7 +129,22 @@ export class HumanService{
         );
     }
 
-    
+    findManagerByRegistration(registrationNumber: string) {
+        return this.http.get<Manager>(`${this.myApiUrl}/manager/${registrationNumber}`).pipe(
+            tap(
+                (manager)=> console.log(manager)
+            ),
+            catchError(this.handleError)
+        )
+    }
+    listManagers(): Observable<Employee[]> {
+        return this.http.get<Employee[]>(`${this.myApiUrl}/employees/managers`).pipe(
+            tap(
+                (employee)=> console.log(employee)
+            ),
+            catchError(this.handleError)
+        )
+    }
 
 
     handleError(error: HttpErrorResponse): Observable<never> {

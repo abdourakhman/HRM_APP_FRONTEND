@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="card card-warning" style="margin-top: 6% !important;">
+        <div class="card-header">
+            <div class="card-title" style="text-align: center !important;">
+                <h5>Employee Information</h5>
+            </div>
+        </div>
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="firstName"><code class="ml-3">First Name</code></label>
+                    <input  required type="text" name="firstName" class="form-control form-control-border border-width-2" id="firstName" placeholder="Enter Employee's first name" ngModel>
+                </div>
+                    <div class="form-group col-md-6">
+                    <label for="lastName"><code class="ml-3">Last Name</code></label>
+                    <input  required type="text" name="name" class="form-control form-control-border border-width-2" id="lastName" placeholder="Enter Employee's last name" ngModel>
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="address"><code class="ml-3">Address</code></label>
+                    <input  required type="text" name="address" class="form-control form-control-border border-width-2" id="adress" placeholder="Enter Employee's address" ngModel>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="telephone"><code class="ml-3">Telephone</code></label>
+                    <input required type="text" name="telephone" class="form-control form-control-border border-width-2" id="telephone" placeholder="Enter Employee's telephone" ngModel>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="email"><code class="ml-3">Email</code></label>
+                    <input required type="email" name="email" class="form-control form-control-border border-width-2" id="email" placeholder="Enter Employee's e-mail" ngModel>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="birthday"><code class="ml-3">Birthday</code></label>
+                    <input  required type="date" name="birthday" class="form-control form-control-border border-width-2" id="birthday" placeholder="Selec Employee's birthday" ngModel>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="gender"><code class="ml-3">Gender</code></label>
+                    <select ngModel name="gender" class="custom-select form-control-border border-width-2" id="gender">
+                       <option value="MALE">Homme</option>
+                       <option value="FEMALE">Femme</option>
+                    </select>
+                 </div>
+                 <div class="form-group col-md-6">
+                    <label for="department"><code class="ml-3">Department</code></label>
+                    <select ngModel name="department" class="custom-select form-control-border border-width-2" id="department">
+                       <option *ngFor="let department of department$ | async" [value]="department.id">{{ department.name }}</option>
+                    </select>
+                 </div>
+                 <div class="form-group col-md-6">
+                    <label for="job"><code class="ml-3">Job</code></label>
+                    <select ngModel name="job" class="custom-select form-control-border border-width-2" id="job">
+                        <option *ngFor="let job of job$ | async" [value]="job.id">{{ job.title }}</option>
+                    </select>
+                 </div>
+                 <div class="form-group col-md-6">
+                    <label for="photo"><code class="ml-3">Photo</code></label>
+                    <input ngModel type="file"  name="photoUrl" class="form-control-file" id="photo">
+                 </div>
+                 <div class="form-group col-md-6">
+                    <label for="manager"><code class="ml-3">Manager</code></label>
+                    <select  ngModel name="manager" class="custom-select form-control-border border-width-2" id="manager">
+                        <option *ngFor="let manager of manager$ | async" [value]="manager.registrationNumber">{{ manager.firstName }} {{ manager.name }}</option>
+                    </select>
+                 </div>      
+            </div>
+            <button type="submit" [disabled]="f.invalid" class="btn btn-primary">Next step <i class="fa fa-angle-double-right"></i>
+            </button>
+        </form>
+    </div>
+</div>

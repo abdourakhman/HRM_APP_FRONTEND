@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { ChartModule } from 'angular-highcharts';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,13 +26,18 @@ import { DonutChartComponent } from './dashboard/donut-chart/donut-chart.compone
 import { TimesheetComponent } from './timesheet/timesheet.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { EmployeeDetailComponent } from './employee/employee-detail/employee-detail.component';
+import { HiringComponent } from './employee/hiring/hiring.component';
+import { FormComponent } from './contract/form/form.component';
+
 
 const appRoutes:Routes = [
   {path:'contracts',component:ContractListComponent},
+  {path:'contracts/add',component:FormComponent},
   {path:'dashboard', component:DashboardComponent},
   {path:'departments',component:DepartmentListComponent},
   {path:'employees',component:EmployeeComponent},
   {path:'employee/detail',component:EmployeeDetailComponent},
+  {path:'employee/hiring',component:HiringComponent},
   {path:'jobs',component:JobListComponent},
   {path:'timeOffRequests',component:TimeOffComponent},
   {path:'timesheets',component:TimesheetComponent},
@@ -58,14 +64,17 @@ const appRoutes:Routes = [
     TimesheetComponent,
     NotFoundComponent,
     EmployeeDetailComponent,
+    HiringComponent,
+    FormComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
-    RouterModule.forRoot(appRoutes),
     HttpClientModule,
     NgxPaginationModule,
     ChartModule,
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [
     OrganizationService,

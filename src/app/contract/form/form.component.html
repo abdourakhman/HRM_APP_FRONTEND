@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="card card-warning" style="margin-top: 10% !important;">
+        <div class="card-header">
+            <div class="card-title" style="text-align: center !important;">
+                <h5>Contract Information</h5>
+            </div>
+        </div>
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="remuneration"><code class="ml-3">Remuneration</code></label>
+                    <input required type="number" name="remuneration" class="form-control form-control-border border-width-2" id="remuneration" placeholder="Enter Employee's remuneration" ngModel>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="start"><code class="ml-3">Start contract</code></label>
+                    <input  required type="date" name="start" class="form-control form-control-border border-width-2" id="start" ngModel>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="type"><code class="ml-3">Type contract</code></label>
+                    <select [(ngModel)]="selectedType"  name="type" class="custom-select form-control-border border-width-2" id="type">
+                       <option value="CDD">CDD</option>
+                       <option value="CDI">CDI</option>
+                       <option value="ALTERNATION">ALTERNANCE</option>
+                    </select>
+                 </div>
+                <div class="form-group col-md-6">
+                    <label for="end"><code class="ml-3">End contract</code></label>
+                    <input *ngIf="selectedType !== 'CDI'"required type="date" name="end" class="form-control form-control-border border-width-2" id="end"  ngModel>
+                </div>
+                
+            </div>
+            <button type="submit" [disabled]="f.invalid" class="btn btn-primary">Finaliser <i class="nav-icon fa fa-handshake"></i></button>
+        </form>
+    </div>
+</div>
