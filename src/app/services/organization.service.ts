@@ -12,9 +12,10 @@ export class OrganizationService{
     constructor(private http: HttpClient){}
 
     saveJob(job){
-        return this.http.post(`${this.myApiUrl}/job`,job).pipe(
-            tap(console.log),
-            catchError(this.handleError)
+        return this.http.post(`${this.myApiUrl}/job`,job).subscribe(
+            (data)=>console.log(data),
+            (error)=>console.log(error),
+            ()=>console.log("retrieving data succesffully")
         )
     }
 
