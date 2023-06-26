@@ -29,6 +29,7 @@ import { EmployeeDetailComponent } from './employee/employee-detail/employee-det
 import { HiringComponent } from './employee/hiring/hiring.component';
 import { FormComponent } from './contract/form/form.component';
 import { JobAddComponent } from './job-list/job-add/job-add.component';
+import { EmployeeDismissComponent } from './employee/employee-dismiss/employee-dismiss.component';
 
 
 const appRoutes:Routes = [
@@ -39,6 +40,7 @@ const appRoutes:Routes = [
   {path:'employees',component:EmployeeComponent},
   {path:'employee/detail',component:EmployeeDetailComponent},
   {path:'employee/hiring',component:HiringComponent},
+  {path:'employee/dismiss',component:EmployeeDismissComponent},
   {path:'jobs',component:JobListComponent},
   {path:'job/add',component:JobAddComponent},
   {path:'timeOffRequests',component:TimeOffComponent},
@@ -69,6 +71,7 @@ const appRoutes:Routes = [
     HiringComponent,
     FormComponent,
     JobAddComponent,
+    EmployeeDismissComponent,
   ],
   imports: [
     BrowserModule,

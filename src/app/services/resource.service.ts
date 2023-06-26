@@ -84,6 +84,19 @@ export class ResourceService{
           catchError(this.handleError)
       );
       }
+      updateContract(contract:Contract){
+        return this.http.put(`${this.myApiUrl}/contract`,contract).subscribe(
+        (data)=> console.log(data),
+          catchError(this.handleError)
+      );
+      }
+
+      deleteContract(contractID:number){
+        return this.http.delete(`${this.myApiUrl}/contract/${contractID}`).subscribe(
+        (data)=> console.log(data),
+          catchError(this.handleError)
+      );
+      }
    
       
     handleError(error: HttpErrorResponse): Observable<never> {

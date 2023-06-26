@@ -141,6 +141,13 @@ export class HumanService{
         )
     }
 
+    removeEmployee(employeeID:number){
+        this.http.delete(`${this.myApiUrl}/employee/${employeeID}`).subscribe(
+            ()=> console.log("emlpoyé supprimé!"),
+            catchError(this.handleError)
+        )
+    }
+
 
     handleError(error: HttpErrorResponse): Observable<never> {
         console.log(error)
