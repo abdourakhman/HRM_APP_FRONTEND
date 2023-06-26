@@ -8,12 +8,6 @@ import { Manager } from "../models/Manager.model";
 @Injectable()
 export class HumanService{
     
-    private httpOptions = {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json'
-        })
-      };
-
     constructor(private http:HttpClient){}
 
     private readonly myApiUrl = 'http://localhost:8081/api';
@@ -23,10 +17,11 @@ export class HumanService{
     selectedEmployee$ = this.selectedEmployeeSubject.asObservable();
     selectedEmployee:Employee
     employeeToSave: Employee;
+    employeeSaved: any ={};
     employees:Employee[];
 
     saveEmployee(){
-        return this.http.post<Employee>(`${this.myApiUrl}/employee`,this.employeeToSave,this.httpOptions).pipe(
+        return this.http.post(`${this.myApiUrl}/employee`,this.employeeToSave).pipe(
             tap(
                 (employee)=> console.log(employee)
             ),

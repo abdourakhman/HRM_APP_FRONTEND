@@ -17,19 +17,18 @@ export class JobListComponent implements OnInit{
   dataState:DataState = DataState.LOADING
   jobs$! : Observable<Job[]>;
   jobSubscription!: Subscription;
-  numberEmployeeByJob: number[];
+  numberEmployeeByJob:Map<string,number> = new Map();
   totalEmployee:number;
   ngOnInit(){
     this.humanService.getNumberOfEmployeesByJob().subscribe(
       (data) => {
-        const mapData = new Map<string, number>(Object.entries(data));          
-        this.numberEmployeeByJob= Array.from(mapData.values());
+        this.numberEmployeeByJob = new Map<string, number>(Object.entries(data));          
       }
     );
 
     this.humanService.getNumberOfEmployees().subscribe(
       (data) => {
-        this.totalEmployee= data;
+        this.totalEmployee= data/8; //c'est juste aléatoire
       }
     );
 

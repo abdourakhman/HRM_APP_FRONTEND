@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { EmployeeStatus } from 'src/app/enumeration/EmployeeStatus.enum';
 import { Gender } from 'src/app/enumeration/Gender.enum';
 import { Department } from 'src/app/models/Department.model';
 import { Employee } from 'src/app/models/Employee.model';
@@ -35,22 +36,26 @@ export class HiringComponent implements OnInit {
   }
 
    public onSubmit(form:NgForm){
-    this.employee.firstName = form.value.firstName
-    this.employee.name = form.value.name
-    this.employee.address = form.value.address
-    this.employee.telephone = form.value.telephone
-    this.employee.birthday = form.value.birthday
-    this.employee.email = form.value.email
-    this.employee.gender = form.value.gender
-    this.employee.department = form.value.department
-    this.employee.job = form.value.job
-    this.humanService.findManagerByRegistration(form.value.manager).subscribe(
-      (data) => this.employee.manager = data
-    )
+    this.employee.registrationNumber="";
+    this.employee.name = form.value.name;
+    this.employee.firstName = form.value.firstName;
+    this.employee.gender = form.value.gender;
+    this.employee.birthday = form.value.birthday;
+    this.employee.address = form.value.address;
+   
+    this.employee.telephone = form.value.telephone;
+    this.employee.email = form.value.email;
+    this.employee.hringDate = new Date()
+    this.employee.status = EmployeeStatus.ACTIVE;
     if(this.employee.gender==Gender.MALE)
       this.employee.photoUrl = "https://img.freepik.com/vecteurs-premium/profil-avatar-homme-icone-ronde_24640-14044.jpg";
     else
       this.employee.photoUrl = "https://img.freepik.com/vecteurs-premium/profil-avatar-femme-icone-ronde_24640-14042.jpg";
+      this.humanService.findManagerByRegistration(form.value.manager).subscribe(
+        (data) => this.employee.manager = data
+      )
+    this.employee.departmentID = form.value.departmentID;
+    this.employee.jobID = form.value.jobID;
     this.humanService.employeeToSave = this.employee;
     this.router.navigate(['/contracts/add']);
   }

@@ -40,13 +40,13 @@
                  </div>
                  <div class="form-group col-md-6">
                     <label for="department"><code class="ml-3">Department</code></label>
-                    <select ngModel name="department" class="custom-select form-control-border border-width-2" id="department">
+                    <select ngModel name="departmentID" class="custom-select form-control-border border-width-2" id="department">
                        <option *ngFor="let department of department$ | async" [value]="department.id">{{ department.name }}</option>
                     </select>
                  </div>
                  <div class="form-group col-md-6">
                     <label for="job"><code class="ml-3">Job</code></label>
-                    <select ngModel name="job" class="custom-select form-control-border border-width-2" id="job">
+                    <select ngModel name="jobID" class="custom-select form-control-border border-width-2" id="job">
                         <option *ngFor="let job of job$ | async" [value]="job.id">{{ job.title }}</option>
                     </select>
                  </div>

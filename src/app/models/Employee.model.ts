@@ -5,7 +5,6 @@ import { Job } from "./Job.model";
 import { Manager } from "./Manager.model";
 
 export class Employee{
-
     constructor(
         public id:number,
         public registrationNumber:string,

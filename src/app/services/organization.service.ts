@@ -15,7 +15,7 @@ export class OrganizationService{
         return this.http.post(`${this.myApiUrl}/job`,job).subscribe(
             (data)=>console.log(data),
             (error)=>console.log(error),
-            ()=>console.log("retrieving data succesffully")
+            ()=>console.log("sending data succesffully")
         )
     }
 
