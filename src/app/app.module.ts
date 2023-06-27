@@ -30,6 +30,9 @@ import { HiringComponent } from './employee/hiring/hiring.component';
 import { FormComponent } from './contract/form/form.component';
 import { JobAddComponent } from './job-list/job-add/job-add.component';
 import { EmployeeDismissComponent } from './employee/employee-dismiss/employee-dismiss.component';
+import { TimeOffPendingComponent } from './time-off/time-off-pending/time-off-pending.component';
+import { TimeOffAcceptedComponent } from './time-off/time-off-accepted/time-off-accepted.component';
+import { TimeOffRejectedComponent } from './time-off/time-off-rejected/time-off-rejected.component';
 
 
 const appRoutes:Routes = [
@@ -44,6 +47,9 @@ const appRoutes:Routes = [
   {path:'jobs',component:JobListComponent},
   {path:'job/add',component:JobAddComponent},
   {path:'timeOffRequests',component:TimeOffComponent},
+  {path:'timeOffRequests/accepted',component:TimeOffAcceptedComponent},
+  {path:'timeOffRequests/rejected',component:TimeOffRejectedComponent},
+  {path:'timeOffRequests/pending',component:TimeOffPendingComponent},
   {path:'timesheets',component:TimesheetComponent},
   {path:'not-found',component:NotFoundComponent},
   {path:'',component:DashboardComponent},
@@ -72,6 +78,9 @@ const appRoutes:Routes = [
     FormComponent,
     JobAddComponent,
     EmployeeDismissComponent,
+    TimeOffPendingComponent,
+    TimeOffAcceptedComponent,
+    TimeOffRejectedComponent,
   ],
   imports: [
     BrowserModule,

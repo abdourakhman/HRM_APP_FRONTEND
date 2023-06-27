@@ -10,7 +10,7 @@ export class TimeOffRequest{
         public type:TypeTimeOff,
         public reason:string,
         public requestDate:Date,
-        public status : RequestTimeOffStatus,
+        public requestStatus : RequestTimeOffStatus,
         public desiredStartDate:Date,
         public desiredEndDate:Date,
         public employeeID:number,

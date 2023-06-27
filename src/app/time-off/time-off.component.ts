@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ResourceService } from '../services/resource.service';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { TimeOffRequest } from '../models/TimeOffRequest.model';
 import { DataState } from '../enumeration/DataState.enum';
 

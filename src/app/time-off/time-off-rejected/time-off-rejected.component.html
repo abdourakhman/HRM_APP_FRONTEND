@@ -1,5 +1,5 @@
 <div>
-    <h1 class="text-center">LIST OF ALL REQUESTS </h1>
+    <h1 class="text-center">LIST OF REJECTED REQUESTS </h1>
 </div>
 <div *ngIf="dataState === 'ERROR'" class="mx-auto mt-5">
     <div class="error p-3 rounded">Erreur rencontrée !</div>
@@ -37,15 +37,6 @@
                <strong><i class="fa fa-comment mr-1"></i> Reason</strong>
                <p class="text-muted" *ngIf="timeOff.reason">{{ timeOff.reason }}</p>
                <p class="text-muted" *ngIf="!timeOff.reason">No reason specified !</p>
-            </div>
-            <div class="row" *ngIf="timeOff.requestStatus == 'PENDING'">
-                <div class="col-md-3  mb-2">
-                    <a href="#" class="btn btn-outline btn-info w-100">validate</a>
-                </div>
-                <div class="offset-7"></div>
-                <div class="col-md-3 mb-2">
-                    <a href="#" class="btn btn-outline btn-warning w-100">reject</a>
-                </div>
             </div>
          </div>
     </div>

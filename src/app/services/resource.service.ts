@@ -34,6 +34,16 @@ export class ResourceService{
             catchError(this.handleError)
         )
     }
+    
+    findTimeOffRequest(slug:string){
+      return this.http.get<TimeOffRequest>(`${this.myApiUrl}/${slug}`).pipe(
+        catchError(this.handleError)
+      )
+    }
+
+    updateTimeOffRequest(timeOffRequest: TimeOffRequest){
+      return this.http.put(`${this.myApiUrl}/timeOffRequest`, timeOffRequest);
+    }
 
     getAverageSalary(){
         return this.http.get(`${this.myApiUrl}/contracts/average/salary`).pipe(
