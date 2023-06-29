@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable, Subject, catchError, tap, throwError } from "rxjs";
 import { Employee } from "../models/Employee.model";
 import { Manager } from "../models/Manager.model";
+import { HumanResourceManager } from "../models/HumanResourceManager.model";
 
 
 @Injectable()
@@ -139,6 +140,11 @@ export class HumanService{
             ),
             catchError(this.handleError)
         )
+    }
+
+    findHumanResourceManager(id:number){
+        return this.http.get<HumanResourceManager>(`${this.myApiUrl}/humanResourceManagers/${id}`)
+
     }
 
     removeEmployee(employeeID:number){

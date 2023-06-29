@@ -4,6 +4,7 @@ import { ResourceService } from '../services/resource.service';
 import { Contract } from '../models/Contract.model';
 import { DataState } from '../enumeration/DataState.enum';
 import { HumanService } from '../services/human.service';
+import { Employee } from '../models/Employee.model';
 
 @Component({
   selector: 'app-contract-list',
@@ -19,12 +20,14 @@ export class ContractListComponent implements OnInit{
   ngOnInit(): void {
     this.contracts$ = this.resourceService.listContract();
     this.contracts$.subscribe(
-      (value)=>{console.log},
-      (error)=>this.dataState = DataState.ERROR,
+      (value)=>console.log(value),
+      ()=>this.dataState = DataState.ERROR,
       ()=>{this.dataState=DataState.COMPLETE; }
     )
   }
   
+  
+
   pageChanged(event: number){
     window.scrollTo(0,200);
     this.currentPage=event;

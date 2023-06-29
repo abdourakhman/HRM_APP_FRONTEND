@@ -9,7 +9,7 @@
         <div class="spinner"></div>
     </div>
     <div *ngIf="dataState === 'COMPLETE'" class="row">
-        <div class="col-sm-4 col-md-4 " *ngFor="let contract of contracts$ | async | paginate: { itemsPerPage:12, currentPage:currentPage}">
+        <div class="col-sm-4 col-md-4 " *ngFor="let contract of contracts$ | async | paginate: { itemsPerPage:12, currentPage:currentPage}; let i = index">
             <div class="position-relative  rounded p-3 m-3" style="height: 210px; color: black; background-color: azure;">
                 <div class="ribbon-wrapper ribbon-xl">
                 <div class="ribbon text-lg" [ngClass]="{'bg-danger':contract.type === 'ALTERNATION',
@@ -19,7 +19,6 @@
                 </div>
                 </div>
                 <p>Employee: {{contract.employee.firstName}} {{contract.employee.name}}</p>
-                <p>human Resource Manager:</p>
                 <p class="margin-auto badge badge-warning">{{contract.status}}</p>
                 <p style="text-decoration: underline; font-size: 0.8em;" class="badge badge-secondary">Ref N°= {{ contract.employee.registrationNumber | uppercase}}</p> 
                 <p class= "text-center py-2">
